@@ -1,0 +1,82 @@
+---
+title: "Actividades practicas dia 2"
+author: "Guilherme"
+date: "8/30/2021"
+output: html_document
+---
+
+### Questao 1
+```{r}
+felicidad = 
+  read.csv("/home/guilherme/Desktop/curso_R/curso_R/tabelas/felicidad_america_latina.csv")
+
+#Questao 1
+#a)
+mean(felicidad$Healthy.life.expectancy)
+
+#b)
+felicidad$Country.name[order(felicidad$Healthy.life.expectancy)][1]
+
+felicidad$Country.name[order(felicidad$Healthy.life.expectancy, decreasing = T)][1]
+```
+
+### Questao 2
+```{r}
+#a)
+felicidad$Country.name[order(felicidad$Social.support)][1]
+
+#b)
+felicidad$Country.name[order(felicidad$Social.support)][1] == felicidad$Country.name[order(felicidad$Ladder.score)][1]
+
+```
+
+### Questao 3
+```{r}
+felicidad$rounded = round(felicidad$Ladder.score, digits = 1)
+
+felicidad$Country.name[!unique(felicidad$rounded)] 
+
+
+felicidad$Country.name[felicidad$rounded %in% names(table(felicidad$rounded)[table(felicidad$rounded) > 1])] 
+
+```
+### Questao 4
+#### Loop
+```{r}
+
+idad_mayor = c()
+
+idad_menor = c()
+
+for (i in 1:nrow(felicidad)){
+  if (felicidad$Ladder.score[i] > 6.1){
+    idad_mayor[i] = (felicidad$Healthy.life.expectancy[i])
+  }else{
+    idad_menor[i] = (felicidad$Healthy.life.expectancy[i])
+  }
+}
+
+mean(idad_mayor)
+var(idad_menor, na.rm = T)
+```
+#### Indexacion
+```{r}
+
+idad_mayor = 
+  felicidad$Healthy.life.expectancy[felicidad$Ladder.score > 6.1]
+
+ mean(idad_mayor)
+ 
+ idad_menor = 
+  felicidad$Healthy.life.expectancy[felicidad$Ladder.score < 6.1]
+ 
+var(idad_menor)
+
+```
+
+### Questao 5
+```{r}
+
+
+```
+

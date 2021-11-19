@@ -1,0 +1,436 @@
+---
+title: "Jugando con R y Voronoi (ESTALMAT 2018)"
+author: "Antonio Sánchez Chinchón"
+date: "24 de febrero de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Las regiones de Voronoi
+
+Un diagrama de Voronoi es una **descomposición de un espacio métrico en regiones**, asociada a la presencia de objetos, de tal forma, que en dicha descomposición, a cada objeto **se le asigna una región del espacio métrico formada por los puntos que son más cercanos a él que a ninguno de los otros** objetos.
+
+Es decir: consiste en **dividir el espacio en tantas regiones como puntos tengamos de tal forma qu ea cada punto le asignemos la región formada por todo lo que está más cerca de él que de nadie**.
+
+## Primer ejemplo: unos cuantos puntos
+
+Vamos a visualizar el diagrama de Voronoi definido **para unos cuantos puntos que elijamos**. Lo primero que tenemos que hacer es **cargar las librerías** de R que vamos a necesitar. Son estas dos:
+
++ ´deldir´: para calcular las regiones
++ ´ggplot2´: para dibujar el resultado
+
+
+```{r, message=FALSE, warning=FALSE}
+library(deldir)
+library(ggplot2)
+```
+
+Si no tienes instaladas las librerías, antes **tendrás que ejecutar lo siguiente**:
+
+```{r, eval=FALSE}
+install.packages("deldir")
+install.packages("ggplot2")
+```
+
+La instalación **sólo se tiene que hacer una vez**. Cuando cargas las librerías, todas sus funciones están disponibles durante toda la sesión, con lo que tampoco tienes que volver a cargarlas a no ser que salgas.
+
+Lo primero que vamos a hacer es un ejemplo sencillo con dos puntos: `(1,2)` y `(5,1)`
+
+
+```{r, fig.align='center', dev='svg'}
+#######################################################################
+# Ejemplo 1
+#######################################################################
+
+# Creamos una tabla con los dos puntos y la llamamos puntos
+puntos=data.frame(x=c(1,5), y=c(2,1))
+
+# Calculamos las regiones y las guardamos en el conjunto voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Las dibujamos
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2),  data=voronoi)+
+  geom_point(aes(x = x, y = y), data=puntos)
+
+```
+
++ **Ejercicio 1:** Haz lo mismo pero con tres puntos: `(1,2)`, `(3,5)` y `(5,1)`
+
+```{r, fig.align='center', dev='svg'}
+
+# Creamos una tabla con los dos puntos y la llamamos puntos
+puntos=data.frame(x=c(1,5,3), y=c(2,1,5))
+
+# Calculamos las regiones y las guardamos en el conjunto voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Las dibujamos
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2),  data=voronoi)+
+  geom_point(aes(x = x, y = y), data=puntos)
+
+```
+
+
+## Segundo ejemplo: muchos puntos al azar
+
+Ahora vamos a hacer lo mismo **pero para muchos puntos** $(x,y)$ al azar entre $[0,1]^2$. Para eso vamos a usar la función `runif`, que devuelve números al azar entre cualquier intervalo.
+
+```{r, fig.align='center', dev='svg'}
+#######################################################################
+# Ejemplo 2
+#######################################################################
+n=100 # Cantidad de puntos
+
+# Creamos una tabla con los dos puntos y la llamamos puntos
+puntos=data.frame(x=runif(100), y=runif(100))
+
+# Calculamos las regiones y las guardamos en el conjunto voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Las dibujamos
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2),  data=voronoi)+
+  geom_point(aes(x = x, y = y), data=puntos)
+
+```
+
+## Tercer ejemplo: el círculo
+
+Vamos a situar 6 puntos en un círculo de radio 1 y a repetir el proceso. Esta vez lo vamos a hacer diferente; empezaremos por definir los ángulos a los que estarán los puntos y luego calcularemos las coordenadas de `x` e `y`
+
+
+```{r, fig.align='center', dev='svg'}
+n=6 # Cantidad de puntos
+
+# Angulos de los puntos
+angulos=seq(from=0, by=2*pi/n, length.out=n)
+
+# Generamos los puntos
+puntos=data.frame(x=cos(angulos), y=sin(angulos))
+
+# Calculamos las regiones de Voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Pintamos todo
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2),  data=voronoi)+
+  geom_point(aes(x = x, y = y), data=puntos)
+```
+
++ **Ejercicio 2:** Haz lo mismo pero con 30 puntos
+
+```{r, fig.align='center', dev='svg'}
+n=30 # Cantidad de puntos
+
+# Angulos de los puntos
+angulos=seq(from=0, by=2*pi/n, length.out=n)
+
+# Generamos los puntos
+puntos=data.frame(x=cos(angulos), y=sin(angulos))
+
+# Calculamos las regiones de Voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Pintamos todo
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2),  data=voronoi)+
+  geom_point(aes(x = x, y = y), data=puntos)
+```
+
+
+## Cuarto ejemplo: la espiral
+
+Una espiral es una línea **curva generada desde un punto que se va alejando progresivamente del centro a la vez que gira alrededor de él**. Convertir nuestros puntos en una espiral es fácil. Basta con ir aumentando el radio sucesivamente con cada punto:
+
+```{r, fig.align='center', dev='svg'}
+n=30 # Cantidad de puntos
+
+# Angulos de los puntos
+angulos=seq(from=0, by=2*pi/n, length.out=n)
+
+# Radio de los puntos
+radio=1:n
+
+# Generamos los puntos
+puntos=data.frame(x=radio*cos(angulos), y=radio*sin(angulos))
+
+# Los pintamos
+ggplot() + 
+  geom_point(aes(x = x, y = y), data=puntos)
+
+```
+
+En esta espiral damos **una vuelta exacta de 360º** porque cada uno de los `n` puntos está separado del siguiente un ángulo de $2\pi/n$, que en nuestro caso son `r 2*pi/30` radianes. Vamos a elegir un ángulo fijo mayor que el que acabamos de usar, por ejemplo `pi/6`, que es igual a `r pi/6` radianes:
+
+```{r, fig.align='center', dev='svg'}
+n=30 # Cantidad de puntos
+
+# Angulos de los puntos
+angulos=seq(from=0, by=pi/6, length.out=n)
+
+# Radio de los puntos
+radio=1:n
+
+# Generamos los puntos
+puntos=data.frame(x=radio*cos(angulos), y=radio*sin(angulos))
+
+# Los pintamos
+ggplot() + 
+  geom_point(aes(x = x, y = y), data=puntos)
+```
+
+Hemos hecho una espiral más *cerrada*.
+
+
++ **Ejercicio 3**: Haz lo mismo pero con un ángulo de separación igual a <code>pi*(3 - sqrt(5))</code> y <code>n=300</code>
+
+```{r, fig.align='center', dev='svg'}
+n=300 # Cantidad de puntos
+
+# Angulos de los puntos
+angulos=seq(from=0, by=pi*(3-sqrt(5)), length.out=n)
+
+# Radio de los puntos
+radio=1:n
+
+# Generamos los puntos
+puntos=data.frame(x=radio*cos(angulos), y=radio*sin(angulos))
+
+# Los pintamos
+ggplot() + 
+  geom_point(aes(x = x, y = y), data=puntos)
+```
+
+Sigue estando la espiral aunque no lo parezca.
+
++ **Ejercicio 4**: Ahora pinta las regiones de Voronoi
+
+```{r, fig.align='center', dev='svg'}
+n=300 # Cantidad de puntos
+
+# Angulos de los puntos
+angulos=seq(from=0, by=pi * (3 - sqrt(5)), length.out=n)
+
+# Radio de los puntos
+radio=1:n
+
+# Generamos los puntos
+puntos=data.frame(x=radio*cos(angulos), y=radio*sin(angulos))
+
+# Calculamos las regiones de Voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Los pintamos
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2),  data=voronoi)+
+  geom_point(aes(x = x, y = y), data=puntos)+
+  theme_void()
+
+```
+
+(la últimas línea `theme_void()` la hemos metido para eliminar el fondo y las líneas que marcan la graduación de los ejes, y dejar el dibujo más bonito)
+
+Esto es un **girasol**. La forma en que organizan las plantas sus hojas se llama **Phyllotaxis** y se puede expresar en términos matemáticos. En concreto, el ángulo $\pi (3 - \sqrt5))$ se llama **ángulo áureo** y explica la forma en que organizan numerosas plantas sus hojas o en nuestro caso, **cómo se organizan las pipas en el girasol**.
+
+
+## Quinto ejemplo: recursividad
+
+Ahora vamos a hacer algo un poco más complicado: 
+
++ Empezamos calculando 6 puntos en un círculo centrado en el origen de coordenadas `(0,0)` y radio igual a `1` (hasta aquí nada nuevo)
++ Luego hacemos lo mismo con cada uno de los 6 puntos que hemos creado en el paso anterior, pero el radio ahora es `0.8` en vez de `1`. En este paso generamos 36 puntos nuevos y nos olvidamos de los 6 puntos del paso anterior.
++ Pintamos los puntos (esto sabemos hacerlo)
+
+```{r, fig.align='center', dev='svg'}
+npuntos=6 # Cantidad de puntos
+radius=0.8 # Factor de expansion/compresion
+
+# Angulos de los puntos
+angulos=seq(from=0, by=2*pi/npuntos, length.out=npuntos)
+
+# centro inicial
+puntos=data.frame(x=0, y=0)
+
+# Iteramos
+for (k in 1:2)
+{
+  temp=data.frame()
+  for (i in 1:nrow(puntos))
+  {
+    df_punto=data.frame(x=puntos[i,"x"]+radius^(k-1)*cos(angulos), 
+                        y=puntos[i,"y"]+radius^(k-1)*sin(angulos)) 
+    temp=rbind(df_punto, temp)
+  }
+  puntos=temp
+}
+
+# Pintamos los puntos
+ggplot() + 
+  geom_point(aes(x = x, y = y), data=puntos)
+
+```
+
++ **Ejercicio 5**: ahora pinta las regiones de Voronoi de esos puntos. Pinta solo las regiones, sin los puntos de dentro (para eso tienes que eliminar la línea de código que empieza con `geom_point`)
+
+```{r, fig.align='center', dev='svg'}
+npuntos=6 # Cantidad de puntos
+radius=0.8 # Factor de expansion/compresion
+
+# Angulos de los puntos
+angulos=seq(from=0, by=2*pi/npuntos, length.out=npuntos)
+
+# centro inicial
+puntos=data.frame(x=0, y=0)
+
+# Iteramos
+for (k in 1:2)
+{
+  temp=data.frame()
+  for (i in 1:nrow(puntos))
+  {
+    df_punto=data.frame(x=puntos[i,"x"]+radius^(k-1)*cos(angulos), 
+                        y=puntos[i,"y"]+radius^(k-1)*sin(angulos)) 
+    temp=rbind(df_punto, temp)
+  }
+  puntos=temp
+}
+
+# Calculamos las regiones de Voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Las pintamos
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2), data=voronoi)+
+  theme_void()
+
+```
+
+
+## Sexto ejemplo: mandalas
+
+Ahora vamos a hacer lo mismo para 3 iteraciones, `npoints=6` y `radius=3.8`. De paso vamos a sacar la cantidad de iteraciones como una variable.
+
+```{r, fig.align='center', dev='svg'}
+npuntos=6 # Cantidad de puntos
+radius=3.8 # Factor de expansion/compresion
+iteraciones=3 # Cantidad de iteraciones
+
+# Angulos de los puntos
+angulos=seq(from=0, by=2*pi/npuntos, length.out=npuntos)
+
+# Centro inicial
+puntos=data.frame(x=0, y=0)
+
+# Iteramos
+for (k in 1:iteraciones)
+{
+  temp=data.frame()
+  for (i in 1:nrow(puntos))
+  {
+    df_punto=data.frame(x=puntos[i,"x"]+radius^(k-1)*cos(angulos), 
+                        y=puntos[i,"y"]+radius^(k-1)*sin(angulos)) 
+    temp=rbind(df_punto, temp)
+  }
+  puntos=temp
+}
+
+# Calculamos las regiones de Voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Las pintamos
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2), data=voronoi)+
+  theme_void()
+
+```
+
+Ahora vamos a hacer lo mismo para 3 iteraciones, `points=8` y `radius=2.1`
+
+```{r, fig.align='center', dev='svg'}
+npuntos=8 # Cantidad de puntos
+radius=2.1 # Factor de expansion/compresion
+iteraciones=3 # Cantidad de iteraciones
+
+# Angulos de los puntos
+angulos=seq(from=0, by=2*pi/npuntos, length.out=npuntos)
+
+# centro inicial
+puntos=data.frame(x=0, y=0)
+
+# Iteramos
+for (k in 1:iteraciones)
+{
+  temp=data.frame()
+  for (i in 1:nrow(puntos))
+  {
+    df_punto=data.frame(x=puntos[i,"x"]+radius^(k-1)*cos(angulos), 
+                        y=puntos[i,"y"]+radius^(k-1)*sin(angulos)) 
+    temp=rbind(df_punto, temp)
+  }
+  puntos=temp
+}
+
+# Calculamos las regiones de Voronoi
+voronoi=deldir(puntos)$dirsgs
+
+# Las pintamos
+ggplot() + 
+  geom_segment(aes(x = x1, 
+                   y = y1, 
+                   xend = x2, 
+                   yend = y2), data=voronoi)+
+  theme_void()
+
+```
+Hemos escrito un programa que genera *mandalas* para colorear: **ahora te toca a tí jugar con él y crear unos cuantos**. 
+
+Algunos **consejos**:
+
+1. Puedes pintar bastantes puntos, pero ten cuidado con las iteraciones (no hagas más de 4 ó 5), sobre todo si el número de puntos que eliges es alto, ya que la cantidad de puntos que se generan crece exponencialmente y el programa puede *caerse*
+
+2.  Si quieres guardar alguno de los mandalas puedes ejecutar el siguiente comando (cambia el nombre `mandala.png` por el que quieras):
+
+```{r, eval=FALSE}
+ggsave("mandala.png", height=5, width=5, units='in', dpi=600)
+```
+Esto guardará en tu PC una copia del mandala con el nombre "mandala.png" (o el quue hayas elegido) en tu directorio de trabajo. 
+
+Para saber cuál es tu directorio de trabajo puedes ejecutar el comando:
+
+```{r, eval=FALSE}
+getwd()
+```
+si quieres cambiar tu directorio de trabajo puedes ejecutar el comando:
+
+```{r, eval=FALSE}
+setwd("EL PATH DE TU NUEVO DIRECTORIO DE TRABAJO")
+```
