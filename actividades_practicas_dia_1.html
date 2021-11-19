@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Curso R - Actividades prácticas del día 1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+            <a class="navbar-brand" href="index.html">Curso R</a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dias del curso
+          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="dia_1.html">Día 1</a>
+                            <a class="dropdown-item" href="dia_2.html">Día 2</a>
+                            <a class="dropdown-item disabled" href="#">Día 3</a>
+                            <a class="dropdown-item disabled" href="#">Día 4</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actividades prácticas
+          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="actividades_practicas_dia_1.html">Día 1</a>
+                            <a class="dropdown-item disabled" href="#">Día 2</a>
+                            <a class="dropdown-item disabled" href="#">Día 3</a>
+                            <a class="dropdown-item disabled" href="#">Día 4</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Enlaces que pueden ayudarte
+          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="https://stackoverflow.com/">Stackoverflow</a>
+                            <a class="dropdown-item" href="https://www.r-bloggers.com/">R-bloggers</a>
+                            <a class="dropdown-item" href="https://www.biostars.org/">Biostars</a>
+                            <a class="dropdown-item" href="https://github.com/">Github</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Quienes somos</a>
+                    </li>
+                </ul>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <li class="nav-item">
+                        <a href="https://ciicam.com/">
+                            <img src="img/CIICAM.png" width="120">
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 my-3 p-3 bg-body rounded shadow-sm">
+            <div id="introdución" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="title toc-ignore">Actividades prácticas del día 1</h1>
+            </div>
+            <div id="Actividades_practicas" class="section level2 ">
+                <p>
+                    En la actividad práctica de hoy exploraremos un poco los datos del relevamiento de especies por clases de animales de la Amazonía peruana realizado en el periodo de 2010 a 2019. En este ejercicio discutiremos algunos <strong> conceptos abordados en la lección
+                        del día 1 </strong> para facilitar la comprensión de los datos. Para descargar los datos haga <a href="actividades_practicas/tabela_actividades_practicas_dia_1.csv" class="alert-link">clic
+                        aquí</a>.
+                </p>
+                <p>
+                    <table class="styled-table" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+                        <thead>
+                            <tr class="tableizer-firstrow">
+                                <th>Categoría</th>
+                                <th>2010</th>
+                                <th>2011</th>
+                                <th>2012</th>
+                                <th>2013</th>
+                                <th>2014</th>
+                                <th>2015</th>
+                                <th>2016</th>
+                                <th>2017</th>
+                                <th>2018</th>
+                                <th>2019</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Anfibios</td>
+                                <td>538</td>
+                                <td>538</td>
+                                <td>538</td>
+                                <td>538</td>
+                                <td>624</td>
+                                <td>588</td>
+                                <td>588</td>
+                                <td>603</td>
+                                <td>622</td>
+                                <td>626</td>
+                            </tr>
+                            <tr>
+                                <td>Reptiles</td>
+                                <td>400</td>
+                                <td>421</td>
+                                <td>421</td>
+                                <td>446</td>
+                                <td>446</td>
+                                <td>452</td>
+                                <td>455</td>
+                                <td>467</td>
+                                <td>469</td>
+                                <td>474</td>
+                            </tr>
+                            <tr>
+                                <td>Aves</td>
+                                <td> 1 831</td>
+                                <td> 1 835</td>
+                                <td> 1 835</td>
+                                <td> 1 847</td>
+                                <td> 1 847</td>
+                                <td> 1 849</td>
+                                <td> 1 852</td>
+                                <td> 1 857</td>
+                                <td> 1 857</td>
+                                <td> 1 857</td>
+                            </tr>
+                            <tr>
+                                <td>Mamíferos</td>
+                                <td>508</td>
+                                <td>512</td>
+                                <td>519</td>
+                                <td>524</td>
+                                <td>525</td>
+                                <td>537</td>
+                                <td>545</td>
+                                <td>551</td>
+                                <td>559</td>
+                                <td>559</td>
+                            </tr>
+                            <tr>
+                                <td>Peces continentales</td>
+                                <td>855</td>
+                                <td> 1 010</td>
+                                <td> 1 064</td>
+                                <td> 1 064</td>
+                                <td> 1 064</td>
+                                <td> 1 064</td>
+                                <td> 1 064</td>
+                                <td> 1 064</td>
+                                <td> 1 141</td>
+                                <td> 1 141</td>
+                            </tr>
+                            <tr>
+                                <td>Peces marinos</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td> 1 090</td>
+                            </tr>
+                            <tr>
+                                <td>Angiospermas y gimnospermas</td>
+                                <td> 19 000</td>
+                                <td> 19 000</td>
+                                <td> 19 000</td>
+                                <td> 19 000</td>
+                                <td> 19 000</td>
+                                <td> 19 000</td>
+                                <td> 19 000</td>
+                                <td> 19 147</td>
+                                <td> 19 174</td>
+                                <td> 19 422</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+                <div class="alert alert-primary" role="alert">
+                    Consejos:
+                    <hr>
+                    <p>1. Cree un proyecto en R, denominado actividades_practicas_día_1 </p>
+                    <p>2. Crear un documento Rmarkdown con salida html </p>
+                    <p>3. Importar el archivo tabela_actividades_practicas_dia_1.csv en el R</p>
+                    <hr> Evaluaremos principalmente <strong> el desarrollo del <i>script</i> </strong> y el resultado final.
+                </div>
+                <p><strong>Preguntas:</strong></p>
+                <p>1. ¿Cuál es la estructura de los datos del archivo tabela_actividades_practicas_dia_1.csv? </p>
+                <p>2. ¿Qué tipos de variables puedes identificar? ¿Qué quiere decir con cada uno de ellos?
+                    <p>3. ¿Cuántos varíaves son de tipo de <i>character</i>?</p>
+                    <p>4. ¿Cuál es el número total de especies por clase por año? </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>2010    2011    2012    2013    2014    2015    2016    2017    2018    2019
+23132   23316   23377   23419   23506   23490   23504   23689   23822   25169</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>5. ¿Cuál es la diferencia en el número de especies (clases) de peces continetales entre los años 2010 y 2019? </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseTwo">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>286</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>6. ¿Cuántas especies tienen más aves en comparación con los mamíferos en 2019? </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseThree">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseThree" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>1298</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>7. Porcentaje de los números de especies respectivas para el año 2019. </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseFour">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseFour" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>Anfibios   2.487187
+Reptiles    1.883269
+Aves    7.378124
+Mamíferos   2.220986    
+Peces continentales 4.533355
+Peces marinos   4.330724
+Angiospermas y gimnospermas 77.16636</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>8. ¿Cuál es la razón del número total de especies para 2019 y 2010?</p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseFive">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseFive" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>0.9190671</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>9. ¿Es el número de especies de aves en 2016 mayor que la suma del número de peces de 2012 a 2016? (Booleano) </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseSix">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseSix" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>FALSE</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>10. Imaginemos que el número de especies de peces marinos ha aumentado exponencialmente cada diez años. Crea una tabla con las proyecciones del aumento de especies hasta 2079, cada 10 años, a partir de 2019. Guarde esta tabla en un
+                        archivo csv.
+                    </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseSeven">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseSeven" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>2029 1188100 <br>2039 1.411582e+12 <br>2049 1.992563e+24 <br>2059 3.970306e+48 <br>2069 1.576333e+97 <br>2079 2.484825e+194</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="alert alert-warning" role="alert">
+                        Recuerda que para recibir el <strong>certificado</strong> al final del curso, tendrá que presentar informes sobre el seguimiento de las actividades prácticas.
+                        <hr>
+                        <strong>
+                        Estas actividades deben entregarse en formato rmarkdown (HTML).</strong>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <!-- Always remember to call the above files first before calling the bootstrap.min.js file -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+    <SCRIPT SRC='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></SCRIPT>
+    <SCRIPT>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [
+                    ['$', '$'],
+                    ['\\(', '\\)']
+                ]
+            }
+        })
+    </SCRIPT>
+    <script>
+        $('.collapse').collapse()
+    </script>
+</body>
+
+</html>

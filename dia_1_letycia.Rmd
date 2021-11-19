@@ -1,0 +1,451 @@
+---
+title: "dia_1_letycia"
+author: "Ana Letycia"
+output: html_document
+---
+
+```{r}
+library(knitr)
+library(kableExtra)
+```
+
+## Objetos
+
+Para hacer menos repeticiones y ser más práctico, vamos a asignar los resultados de nuestras operaciones a variables, que en R las llamamos objetos.
+
+### ¿Que es un objecto?
+
+Cualquier variable o conjunto de variables que asignemos a un espacio concreto de la memoria del ordenador mientras estamos utilizando R será un objeto, o un conjunto de objetos. Es decir, estos objetos aparecerán en el ambiente R dentro de *Data*.
+
+```{r}
+x = 1:4
+```
+
+Para acceder valores en un objeto:
+
+```{r}
+x
+```
+
+### Algunas operaciones con objeto
+
+Multiplicando el objeto por un número:
+
+```{r}
+x * 2
+```
+
+Puedes hacer cualquier operación con su objeto, incluido utilizar-lo en funciones del R.
+
+```{r}
+rep(x, 2)
+```
+
+Y también puedes salvar los resultados de las operaciones con objetos en otros objetos.
+
+```{r}
+y = x * 2
+```
+
+Para hacer operaciones con dos objetos, el R los alinea y realiza la operación elemento a elemento.
+
+```{r}
+x + y
+```
+
+Si los objetos son de distinto tamaño, se repetirán todos los elementos del objeto más pequeño para realizar la operación elemento a elemento con todos los elementos del objeto más grande.
+
+```{r}
+x*2
+```
+
+```{r}
+x*c(2,3)
+```
+
+Y si el vector más pequeño no es un múltiplo del vector más grande, se recibe un aviso.
+
+```{r}
+x*c(2,3,4)
+```
+
+Puedes aplicar funciones en el objeto:
+
+```{r}
+sum(x)
+```
+
+```{r}
+mean(x)
+```
+
+```{r}
+var(x)
+```
+
+Y almacenar los resultados en un otro objeto:
+
+```{r}
+z = sum(x)
+```
+
+¡Atención! Si asigna un valor a un objeto ja existente, el objeto será sobrescrito.
+
+```{r}
+x = x + x
+x
+```
+
+El lenguaje es sensible a letras mayúsculas y minúsculas:
+
+```{r}
+#X
+```
+
+### Buenas prácticas para nombrar objetos
+
+-   Pueden contener letras, números, "."  y "\_", pero non pueden ser solo números y no pueden empezar con número o punto
+-   No pueden contener espacios
+-   No utilice acentos
+-   Evite nombres de funciones del R, como sum, var, df
+-   Atención para letras mayúsculas y minúsculas
+
+`mis_datos` $\ne$ `Mis_Datos` $\ne$ `MIS_DATOS`
+
+-   No use nombres que non remeten a que se está analizando:
+
+```{r}
+a = mean(x)
+```
+
+¿Qué es a? En dos meses no te acordarás.
+
+```{r}
+mean_x = mean(x)
+```
+
+Para saber qué objetos se guardan en la memoria, puedes utilizar la función *ls().*
+
+```{r}
+ls()
+```
+
+Para remover un objeto:
+
+```{r}
+rm(x3)
+```
+
+Para remover todos los objetos:
+
+```{r}
+#rm(list = ls()) 
+```
+
+**¡Atención!** El código arriba removerá todos los objetos en el workspace de R, por eso no lo ejecuté.
+
+Los objetos se guardan provisionalmente en la RAM mientras se utiliza el R. Para guardarlos efectivamente, es necesario almacenarlos en un archivo en formato .Rdata. Para esto se emplea la función *save()*.
+
+```{r}
+save(file = "mi_objeto.RData", x)
+```
+
+Para salvar todos los objetos del ambiente de trabajo:
+
+```{r}
+save.image(file = "mi_ambiente.RData")
+```
+
+### Tipos de objetos
+
+¡En R todo es un objeto! Eses objetos pueden ser de distintas formas. Es muy común lidar con distintos tipos de objeto cuando se está haciendo una analice en R y por eso, es imperativo conocer cada un de los tipos y como hacer las conversiones necesarias. Cuando decimos *tipos de objetos* nos referimos a los `tipos de datos que componen los vectores` que forman un objeto y a la `estructura del objeto`.
+
+Eso es importante porque determina como el objeto será manipulado por las funciones.
+
+Los datos pueden ser estructurados de distintas maneras:
+
+![Estructura de datos](http://venus.ifca.unican.es/Rintro/_images/dataStructuresNew.png)
+
+Vea que las estructuras de datos son vectores o combinaciones de vectores.
+
+#### Vectores
+
+Un vector puede contener apenas un tipo de datos, pero varios vectores de distintos tipos, pueden ser organizados en distintas estructuras de datos, como tablas, matrices, listas y otros.
+
+```{r}
+v = c("ABCD", 2:5, TRUE)
+```
+
+```{r}
+class(v)
+str(v)
+```
+
+#### Tipos de vectores
+
+**Interger**
+
+```{r}
+i = seq(1:10)
+i
+```
+
+```{r}
+class(i)
+is.integer(i)
+```
+
+**Numeric**
+
+```{r}
+(n = rep(c(1.1, 2.3, 4.8, 7.0, 10.0), 3))
+```
+
+```{r}
+class(n)
+str(n)
+is.integer(n)
+is.numeric(n)
+```
+
+Podemos transformar un objeto en una clase distinta
+
+```{r}
+i2 = as.numeric(i)
+class(i2)
+is.integer(i2)
+is.numeric(i2)
+```
+
+Los objetos de tipo *interger* ocupan menos espacio en la memoria que los objetos de tipo *numeric*
+
+```{r}
+object.size(i) # interger
+object.size(i2) #numeric
+```
+
+**Character**
+
+```{r}
+nombres = c("Ana", "Maria", "José", "Juan", "Carlos", "Julia")
+```
+
+```{r}
+str(nombres)
+```
+
+**Factor**
+
+Un factor es un vector predefinido que almacena datos categóricos.
+
+```{r}
+formacion = c("Biología", "Ingeniería", "Sociología", "Ingeniería", "Biología", "Geología")
+```
+
+```{r}
+str(formacion)
+```
+
+```{r}
+formacion_factor = as.factor(formacion)
+```
+
+```{r}
+str(formacion_factor)
+```
+
+```{r}
+levels(formacion_factor)
+```
+
+```{r}
+length(formacion_factor)
+```
+
+**Logic**
+
+Retomando los vectores i y i2 para alguns comparativos
+```{r}
+i
+i2
+str(i)
+str(i2)
+```
+
+¿EL Vector i es igual al vector i2?
+```{r}
+i == i2 
+```
+
+¿El primer elemento del vector i es igual al cuarto elemento del vector i?
+```{r}
+i[1] == i[4]
+```
+
+¿Es más grande?
+```{r}
+i[1] > i[4]
+```
+
+¿Es más pequeño?
+```{r}
+i[1] < i[4]
+```
+
+¿El vector i es diferente de dos?
+```{r}
+i != 2
+```
+
+¿El vector i es igual o mas grande que dos?
+```{r}
+i >= 2
+```
+
+¿El vector i es más grande que dos y más pequeño que cinco?
+```{r}
+i > 2 & i < 5
+```
+
+¿El vector i es mas pequeño que dos o mas pequeño que cinco?
+```{r}
+i < 2 | i < 5
+```
+
+¿Cuál es la posición de los elementos del vector i que son más grandes que 8?
+```{r}
+which(i > 8)
+```
+
+Podemos buscar elementos específicos en un vector:
+```{r}
+formacion %in% c("Biología")
+```
+
+Y podemos extraer la información que está en una posición que estamos interesados. Eso se llama indexación y la estudiaremos más adelante también. 
+```{r}
+formacion[which(formacion == "Biología")]
+```
+
+¡Manos a obra! 
+
+Cree un vector con los nombres de cinco personas que admiras. 
+¿Qué tipo de datos forman este vector?
+¿Qué nombre se almacena en la tercera posición?
+
+#### Matrices
+Las matrices se componen de líneas y columnas, generalmente formadas por elementos numéricos. Permiten realizar grandes operaciones de forma automatizada. 
+
+Para crear una matriz:
+```{r}
+X = matrix(1:10, nrow = 5, ncol = 2)
+X
+```
+
+Vea que los números se distribuyen primer en las columnas por defecto. Si quieres cambiar eso:
+```{r}
+W = matrix(1:10, nrow = 5, ncol = 2, byrow = TRUE)
+W
+```
+
+Se puede crear matrices también con objetos ya almacenados en la memoria (vectores o hasta mismo otras matrices):
+```{r}
+XW = matrix(c(X, W), nrow = 5, ncol = 4)
+```
+
+Podemos hacer operaciones matriciales, como la multiplicación por un número.
+```{r}
+X*2
+```
+
+O la multiplicación con otra matriz elemento a elemento.
+```{r}
+X*X
+```
+
+Y también operaciones matriciales.
+```{r}
+X%*%t(X)
+```
+
+Realizar operaciones con matrices exige conocimientos previos de álgebra matricial. Puede explorar la sintaxis de R para este tipo de operaciones ![aquí](https://www.statmethods.net/advstats/matrix.html). Para aprender más sobre el álgebra matricial, puedes ver ![este material](https://aga.frba.utn.edu.ar/matrices/).
+
+#### Data frames (tablas)
+
+Las tablas nos permiten almacenar diferentes tipos de datos en sus columnas. Estas tablas de datos de R son similares a las tablas creadas en otros programas, como las hojas de cálculo de Excel. 
+
+Para crear una tabla directamente en R:
+```{r}
+paises <- data.frame("Pais" = c("Peru", "Argentina", "Chile", "Mexico", "Estados Unidos", "Inglaterra", "Australia"),
+                     "Continente" = c("América Latina", "América Latina", "América Latina", "América Central", "América del Norte", "Europa", "Oceania"))       
+paises
+```
+Podemos acceder a cada una de las columnas con:
+```{r}
+paises$Continente
+```
+
+O también pelo número de la columna:
+```{r}
+paises[,2]
+```
+
+Cuando utilizamos corchetes, podemos definir las posiciones de los elementos a que queremos acceder dentro de la tabla. El primer valor dentro del corchete se refiere a la línea y el segundo valor, a la columna.
+
+```{r}
+paises[1,]
+```
+
+```{r}
+paises[2,2]
+```
+
+# Importación de datos
+
+Para realizar un análisis de datos en el mundo real, probablemente necesitará un conjunto de datos recogidos previamente que desee evaluar. Hay muchas formas de importar tablas de datos en R y aquí hablaremos de las más comunes. 
+
+## read.table
+
+Puedes ingresar archivos tipo texto
+```{r}
+mi_tabla = read.table("tabelas/Ant-Man.And.The.Wasp.txt", sep = "\t")
+```
+
+## read.delim
+
+Una otra opción para leer archivos texto:
+```{r}
+mi_delim = read.delim("tabelas/Ant-Man.And.The.Wasp.txt", sep = "\t", quote = "")
+```
+
+## read.csv
+
+Para leer archivos separados por vírgula (.csv)
+```{r}
+mi_data = read.csv("tabelas/felicidad_america_latina.csv")
+str(mi_data)
+```
+
+És muy importante obvservar los argumentos de la función read.csv (y tabién de read.table()). 
+
+```{r}
+#?read.csv()
+```
+
+```{r}
+mi_data = read.csv(file = "tabelas/felicidad_america_latina.csv", header = T, sep = ",", dec = ".")
+```
+
+```{r}
+str(mi_data)
+```
+
+Atencción! Se utilizas el excel, puedes occorrer de sus arquivo csv ser separaro por **;** o sus casas decimales serem separadas por ",". Se define adequadamente los argumentos da función, poderá importar eses archivos sen problemas. Se vees que el resultado de las funciones head() o str() parece desconfigurados, verifica cuales son los separadores de su archivo y intenta novamente la importación definindo los argumentos sep y dec de la funcion read.csv().
+
+# Mi primer projceto
+
+Con RStudio puedes mantener tu trabajo organizado por proyectos. Así, si estás haciendo un análisis de datos para tu tesis, por ejemplo, puedes crear un proyecto para mantener todos los datos, el código, los resultados, el historial de análisis y los informes en un único directorio de fácil acceso. 
+
+Podemos hacer de este curso un proyecto en R. Así, todo lo que aprendas en estos días será fácil de encontrar y estudiar cuando quieras. 
+
+Te guiaré para crear tu primer proyecto en R. 

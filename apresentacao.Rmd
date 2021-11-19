@@ -1,0 +1,219 @@
+---
+title: "Curso R"
+subtitle: "Motivación"
+author: "Guilherme Kenichi Hosaka y Ana Letycia Basso Garcia"
+institute: "ESALQ/USP"
+date: "07/08/21"
+encoding: "UTF-8" 
+output:
+  xaringan::moon_reader:
+    css: [default, my-style.css, default-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+## La importancia de la análisis de datos en la ciencia
+
+ <img src=".\apresentacao_files\sci_diagram1.png" width="7000px"/>
+
+---
+## La importancia de la análisis de datos en la ciencia
+
+ <img src=".\apresentacao_files\sci_diagram2.png" width="7000px"/>
+
+---
+## ¿ Por qué aprender un lenguaje de programación?
+
+
+.center[<img src=".\apresentacao_files\1.png" width="150px"/> 
+<img src=".\apresentacao_files\2.png" width="140px"/> 
+<img src=".\apresentacao_files\3.png" width="140px"/>
+<img src=".\apresentacao_files\4.png" width="140px"/>
+<img src=".\apresentacao_files\5.png" width="140px"/>] 
+
+--
+
+ - Linguajes de programación mas utilizadas en analísis de datos  
+ 
+ .center[<img src="https://www.python.org/static/img/python-logo.png" width="150px"/>
+ <img src="https://www.r-project.org/Rlogo.png" width="75px"/>]
+  -- 
+ 
+- Reino Unido perdió el control de los casos de COVID en 2020 por un problema con el programa Excel
+
+ [En inglés](https://www.bbc.com/news/technology-54423988)  
+ [En español](https://www.elconfidencial.com/tecnologia/2020-10-28/excel-coronavirus-covid-datos-caos-programa_2808600/)  
+
+---
+
+## ¿Qué es un programa?
+
+<img src=".\apresentacao_files\script.png" width="800px"/>  
+
+
+---
+## ¿Qué es R?
+- Linguage de codigo abierto   
+  
+- Es un proyecto GNU   
+ <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/22/Heckert_GNU_white.svg/180px-Heckert_GNU_white.svg.png" width="75px"/> Free Software Foundation’s GNU general license
+  
+- Se desarrolló a partir del lenguaje de programación S  
+  
+- Fue creado por [John Chambers](https://statweb.stanford.edu/~jmc4/vitae.html) e colaboradores en el Bell Laboratories  
+
+- **Un ambiente en que aplicamos y procesamos el análisis estadístico y hacemos gráficos** (y todo lo que quieras)
+
+.center[<img src=".\apresentacao_files\mandala.png" width="150x"/>]
+
+.right[[Puedes conocer más aquí](https://www.r-project.org/about.html)]  
+
+
+---
+
+## El RSudio
+
+.center[<img src=".\img\Rstudio.PNG" width="900x"/>]
+
+---
+## ¿Por qué aprender R?  
+.pull-left[
+  - Infinitas posibilidades para analizar sus datos   <img src=".\apresentacao_files\creative.png" width="300px"/>  
+]
+.pull-right[
+  - [Gráficos](https://ggplot2-book.org/)  
+  
+  <img src=".\apresentacao_files/plot_example.png" width="1500x"/>
+]  
+
+
+
+
+.center[[Y tú, ¿por qué quieres aprender R?](https://www.menti.com/bgzxq6tdf5)]
+.center[<img src=".\apresentacao_files/mentimeter_qr_code.png" width="100x"/>]
+---
+
+## Curva de aprendizaje / frustraciones
+<img src="http://spatial-ecology.net/wp-content/uploads/2016/06/learningCurve.png" width="500">
+
+
+.footnote[
+ 
+http://spatial-ecology.net/wp-content/uploads/2016/06/learningCurve.png
+]
+
+---
+
+## Curva de aprendizaje / frustraciones
+
+- Comience con lo básico - ten paciencia  
+
+--
+
+- R te indica donde está el error 
+
+<img src="https://i.stack.imgur.com/sPpUt.jpg" width="300px"/>
+
+
+
+--
+
+- Busque el error en google:
+
+--
+
+ - Stackoverflow 
+   <img src="https://miro.medium.com/max/2400/0*VU152GltXiWeD0Xy.png" width="100px"/>
+--
+
+ - R-bloggers
+   <img src="https://www.r-bloggers.com/wp-content/uploads/2020/07/R_02.webp" width="100px"/>
+
+--
+
+ - Biostars
+  <img src="https://www.biostars.org/static/images/logo6.svg" width="100px"/>
+
+--
+ 
+ - Github
+  <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.analyticsvidhya.com%2Fwp-content%2Fuploads%2F2015%2F07%2Fgithub_logo.png&amp;f=1&amp;nofb=1" width="100px"/>
+
+
+---
+## Curva de aprendizaje / frustraciones
+
+<p align="center"> <img src="https://i.redd.it/bpmpqzsatwl21.jpg" width="500px"/> </p>
+
+.footnote[
+ 
+https://www.reddit.com/r/ProgrammerHumor/comments/b0nos8/stackoverflow_github/
+]
+
+---
+
+## CRAN / Boiconductor / github 
+
+"Repository: a place where things are stored" Cambridge Dictionary
+
+
+<img src="https://cdn.pixabay.com/photo/2018/10/05/23/14/upgrade-3727076_960_720.jpg" width="350px"/> 
+<img src="https://cdn.pixabay.com/photo/2016/11/22/19/24/archive-1850170_960_720.jpg" width="350px"/>
+
+--
+
+- CRAN - nativo del R   <img  src="https://cran.r-project.org/CRANlogo.png" width="50px"/>
+
+
+--
+
+- Bioconductor - analisis genomicas <img  src="https://www.bioconductor.org/images/logo_bioconductor.gif" width="100px"/>
+
+--
+
+- Github <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.analyticsvidhya.com%2Fwp-content%2Fuploads%2F2015%2F07%2Fgithub_logo.png&amp;f=1&amp;nofb=1" width="75px"/>
+
+--
+
+- y muchos otros ...
+
+---
+
+## Reproducibilidad (informes)
+
+--
+
+- Scripts - articulos
+
+--
+
+- Informes (Rmarkdown):
+
+  - R
+  
+  - Bash (Linux)
+  
+  - Python
+  
+  - HTML
+  
+  - Docx
+
+---
+class: center, inverse, 
+
+.center[<img src=".\apresentacao_files\velhos_amigos.png" width="450px"/>]  
+
+[Y tú, ¿qué esperas de este curso?](https://padlet.com/garciaalb/curso_R)
+.center[<img src="https://assets.padletcdn.com/padlets/pho2mjajnfshf98m/qr_code.png" width="100px"/>]  
+
+

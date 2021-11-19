@@ -1,0 +1,20 @@
+---
+title: "Important links to use during the classes"
+output: html_notebook
+---
+
+-   Mentimeter (interación mientras presentación inicial)
+
+<https://www.mentimeter.com/app> (mi login - Letycia)
+
+<https://www.menti.com/bgzxq6tdf5> (para responder)
+
+<https://www.mentimeter.com/s/c38ba22725e679923e709b8ea9542e3e> (para veer los resultados)
+
+-   Pedlet (interaction al final de la presentación inicial)
+
+<https://padlet.com/garciaalb/curso_R> (mi login - Letycia)
+
+-   Google classroom
+
+    h[ttps://classroom.google.com/u/1/c/MjgxMjY1MDgxODc2](https://classroom.google.com/u/1/c/MjgxMjY1MDgxODc2)
