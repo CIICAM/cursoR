@@ -1,1 +1,1 @@
-# curso_R
+# Materiales para el curso de R
