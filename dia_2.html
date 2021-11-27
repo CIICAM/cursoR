@@ -105,6 +105,245 @@
             </div>
             <div class="section level1" style="text-align: justify; max-width: 900px;">
                 <div id="condicionales" class="section level2">
+                    <h3>Continuación del primer día</h3>
+                    <div id="tipos-de-vectores" class="section level4">
+                        <h4>Tipos de vectores</h4>
+                        <p><strong>Interger</strong></p>
+                        <pre class="r"><code>i = seq(1:10)
+i</code></pre>
+                        <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+                        <pre class="r"><code>class(i)</code></pre>
+                        <pre><code>## [1] &quot;integer&quot;</code></pre>
+                        <pre class="r"><code>is.integer(i)</code></pre>
+                        <pre><code>## [1] TRUE</code></pre>
+                        <p><strong>Numeric</strong></p>
+                        <pre class="r"><code>(n = rep(c(1.1, 2.3, 4.8, 7.0, 10.0), 3))</code></pre>
+                        <pre><code>##  [1]  1.1  2.3  4.8  7.0 10.0  1.1  2.3  4.8  7.0 10.0  1.1  2.3  4.8  7.0 10.0</code></pre>
+                        <pre class="r"><code>class(n)</code></pre>
+                        <pre><code>## [1] &quot;numeric&quot;</code></pre>
+                        <pre class="r"><code>str(n)</code></pre>
+                        <pre><code>##  num [1:15] 1.1 2.3 4.8 7 10 1.1 2.3 4.8 7 10 ...</code></pre>
+                        <pre class="r"><code>is.integer(n)</code></pre>
+                        <pre><code>## [1] FALSE</code></pre>
+                        <pre class="r"><code>is.numeric(n)</code></pre>
+                        <pre><code>## [1] TRUE</code></pre>
+                        <p>Podemos transformar un objeto en una clase distinta</p>
+                        <pre class="r"><code>i2 = as.numeric(i)
+class(i2)</code></pre>
+                        <pre><code>## [1] &quot;numeric&quot;</code></pre>
+                        <pre class="r"><code>is.integer(i2)</code></pre>
+                        <pre><code>## [1] FALSE</code></pre>
+                        <pre class="r"><code>is.numeric(i2)</code></pre>
+                        <pre><code>## [1] TRUE</code></pre>
+                        <p>Los objetos de tipo <em>interger</em> ocupan menos espacio en la memoria que los objetos de tipo <em>numeric</em></p>
+                        <pre class="r"><code>object.size(i) # interger</code></pre>
+                        <pre><code>## 96 bytes</code></pre>
+                        <pre class="r"><code>object.size(i2) #numeric</code></pre>
+                        <pre><code>## 176 bytes</code></pre>
+                        <p><strong>Character</strong></p>
+                        <pre class="r"><code>nombres = c(&quot;Ana&quot;, &quot;Maria&quot;, &quot;José&quot;, &quot;Juan&quot;, &quot;Carlos&quot;, &quot;Julia&quot;)</code></pre>
+                        <pre class="r"><code>str(nombres)</code></pre>
+                        <pre><code>##  chr [1:6] &quot;Ana&quot; &quot;Maria&quot; &quot;José&quot; &quot;Juan&quot; &quot;Carlos&quot; &quot;Julia&quot;</code></pre>
+                        <p><strong>Factor</strong></p>
+                        <p>Un factor es un vector predefinido que almacena datos categóricos.</p>
+                        <pre class="r"><code>formacion = c(&quot;Biología&quot;, &quot;Ingeniería&quot;, &quot;Sociología&quot;, &quot;Ingeniería&quot;, &quot;Biología&quot;, &quot;Geología&quot;)</code></pre>
+                        <pre class="r"><code>str(formacion)</code></pre>
+                        <pre><code>##  chr [1:6] &quot;Biología&quot; &quot;Ingeniería&quot; &quot;Sociología&quot; &quot;Ingeniería&quot; &quot;Biología&quot; ...</code></pre>
+                        <pre class="r"><code>formacion_factor = as.factor(formacion)</code></pre>
+                        <pre class="r"><code>str(formacion_factor)</code></pre>
+                        <pre><code>##  Factor w/ 4 levels &quot;Biología&quot;,&quot;Geología&quot;,..: 1 3 4 3 1 2</code></pre>
+                        <pre class="r"><code>levels(formacion_factor)</code></pre>
+                        <pre><code>## [1] &quot;Biología&quot;   &quot;Geología&quot;   &quot;Ingeniería&quot; &quot;Sociología&quot;</code></pre>
+                        <pre class="r"><code>length(formacion_factor)</code></pre>
+                        <pre><code>## [1] 6</code></pre>
+                        <p><strong>Logic</strong></p>
+                        <p>Retomando los vectores i y i2 para alguns comparativos</p>
+                        <pre class="r"><code>i</code></pre>
+                        <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+                        <pre class="r"><code>i2</code></pre>
+                        <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+                        <pre class="r"><code>str(i)</code></pre>
+                        <pre><code>##  int [1:10] 1 2 3 4 5 6 7 8 9 10</code></pre>
+                        <pre class="r"><code>str(i2)</code></pre>
+                        <pre><code>##  num [1:10] 1 2 3 4 5 6 7 8 9 10</code></pre>
+                        <p>¿EL Vector i es igual al vector i2?</p>
+                        <pre class="r"><code>i == i2 </code></pre>
+                        <pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+                        <p>¿El primer elemento del vector i es igual al cuarto elemento del vector i?</p>
+                        <pre class="r"><code>i[1] == i[4]</code></pre>
+                        <pre><code>## [1] FALSE</code></pre>
+                        <p>¿Es más grande?</p>
+                        <pre class="r"><code>i[1] &gt; i[4]</code></pre>
+                        <pre><code>## [1] FALSE</code></pre>
+                        <p>¿Es más pequeño?</p>
+                        <pre class="r"><code>i[1] &lt; i[4]</code></pre>
+                        <pre><code>## [1] TRUE</code></pre>
+                        <p>¿El vector i es diferente de dos?</p>
+                        <pre class="r"><code>i != 2</code></pre>
+                        <pre><code>##  [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+                        <p>¿El vector i es igual o mas grande que dos?</p>
+                        <pre class="r"><code>i &gt;= 2</code></pre>
+                        <pre><code>##  [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+                        <p>¿El vector i es más grande que dos y más pequeño que cinco?</p>
+                        <pre class="r"><code>i &gt; 2 &amp; i &lt; 5</code></pre>
+                        <pre><code>##  [1] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+                        <p>¿El vector i es mas pequeño que dos o mas pequeño que cinco?</p>
+                        <pre class="r"><code>i &lt; 2 | i &lt; 5</code></pre>
+                        <pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+                        <p>¿Cuál es la posición de los elementos del vector i que son más grandes que 8?</p>
+                        <pre class="r"><code>which(i &gt; 8)</code></pre>
+                        <pre><code>## [1]  9 10</code></pre>
+                        <p>Podemos buscar elementos específicos en un vector:</p>
+                        <pre class="r"><code>formacion %in% c(&quot;Biología&quot;)</code></pre>
+                        <pre><code>## [1]  TRUE FALSE FALSE FALSE  TRUE FALSE</code></pre>
+                        <p>Y podemos extraer la información que está en una posición que estamos interesados. Eso se llama indexación y la estudiaremos más adelante también.</p>
+                        <pre class="r"><code>formacion[which(formacion == &quot;Biología&quot;)]</code></pre>
+                        <pre><code>## [1] &quot;Biología&quot; &quot;Biología&quot;</code></pre>
+                        <div class="alert alert-info" role="alert">
+                        <p><strong>¡Manos a la obra!</strong></p>
+                        <hr>
+                        <p>Cree un vector con los nombres de cinco personas que admiras. ¿Qué tipo de datos forman este vector? ¿Qué nombre se almacena en la tercera posición?</p>
+                        </div>
+                    </div>
+                    <div id="matrices" class="section level4">
+                        <h4>Matrices</h4>
+                        <p>Las matrices se componen de líneas y columnas, generalmente formadas por elementos numéricos. Permiten realizar grandes operaciones de forma automatizada.</p>
+                        <p>Para crear una matriz:</p>
+                        <pre class="r"><code>X = matrix(1:10, nrow = 5, ncol = 2)
+X</code></pre>
+                        <pre><code>##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10</code></pre>
+                        <p>Vea que los números se distribuyen primer en las columnas por defecto. Si quieres cambiar eso:
+                        </p>
+                        <pre class="r"><code>W = matrix(1:10, nrow = 5, ncol = 2, byrow = TRUE)
+W</code></pre>
+                        <pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## [3,]    5    6
+## [4,]    7    8
+## [5,]    9   10</code></pre>
+                        <p>Se puede crear matrices también con objetos ya almacenados en la memoria (vectores o hasta mismo otras matrices):</p>
+                        <pre class="r"><code>XW = matrix(c(X, W), nrow = 5, ncol = 4)</code></pre>
+                        <p>Podemos hacer operaciones matriciales, como la multiplicación por un número.</p>
+                        <pre class="r"><code>X*2</code></pre>
+                        <pre><code>##      [,1] [,2]
+## [1,]    2   12
+## [2,]    4   14
+## [3,]    6   16
+## [4,]    8   18
+## [5,]   10   20</code></pre>
+                        <p>O la multiplicación con otra matriz elemento a elemento.</p>
+                        <pre class="r"><code>X*X</code></pre>
+                        <pre><code>##      [,1] [,2]
+## [1,]    1   36
+## [2,]    4   49
+## [3,]    9   64
+## [4,]   16   81
+## [5,]   25  100</code></pre>
+                        <p>Y también operaciones matriciales.</p>
+                        <pre class="r"><code>X%*%t(X)</code></pre>
+                        <pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]   37   44   51   58   65
+## [2,]   44   53   62   71   80
+## [3,]   51   62   73   84   95
+## [4,]   58   71   84   97  110
+## [5,]   65   80   95  110  125</code></pre>
+                        <p>Realizar operaciones con matrices exige conocimientos previos de álgebra matricial. Puede explorar la sintaxis de R para este tipo de operaciones Para aprender más sobre el álgebra matricial, puedes ver <a href="https://rpubs.com/Cesar_AHN/operaciones_con_matrices_multiplicacion_determinante_inversa_factorizacion_descomposicion_grafica"
+                                class="alert-link">este material</a>.</p>
+                    </div>
+                    <div id="data-frames-tablas" class="section level4">
+                        <h4>Data frames (tablas)</h4>
+                        <p>Las tablas nos permiten almacenar diferentes tipos de datos en sus columnas. Estas tablas de datos de R son similares a las tablas creadas en otros programas, como las hojas de cálculo de Excel.</p>
+                        <p>Para crear una tabla directamente en R:</p>
+                        <pre class="r"><code>paises &lt;- data.frame(&quot;Pais&quot; = c(&quot;Peru&quot;, &quot;Argentina&quot;, &quot;Chile&quot;, &quot;Mexico&quot;, &quot;Estados Unidos&quot;, &quot;Inglaterra&quot;, &quot;Australia&quot;),
+                     &quot;Continente&quot; = c(&quot;América Latina&quot;, &quot;América Latina&quot;, &quot;América Latina&quot;, &quot;América Central&quot;, &quot;América del Norte&quot;, &quot;Europa&quot;, &quot;Oceania&quot;))       
+paises</code></pre>
+                        <pre><code>##             Pais        Continente
+## 1           Peru    América Latina
+## 2      Argentina    América Latina
+## 3          Chile    América Latina
+## 4         Mexico   América Central
+## 5 Estados Unidos América del Norte
+## 6     Inglaterra            Europa
+## 7      Australia           Oceania</code></pre>
+                        <p>Podemos acceder a cada una de las columnas con:</p>
+                        <pre class="r"><code>paises$Continente</code></pre>
+                        <pre><code>## [1] &quot;América Latina&quot;    &quot;América Latina&quot;    &quot;América Latina&quot;   
+## [4] &quot;América Central&quot;   &quot;América del Norte&quot; &quot;Europa&quot;           
+## [7] &quot;Oceania&quot;</code></pre>
+                        <p>O también pelo número de la columna:</p>
+                        <pre class="r"><code>paises[,2]</code></pre>
+                        <pre><code>## [1] &quot;América Latina&quot;    &quot;América Latina&quot;    &quot;América Latina&quot;   
+## [4] &quot;América Central&quot;   &quot;América del Norte&quot; &quot;Europa&quot;           
+## [7] &quot;Oceania&quot;</code></pre>
+                        <p>Cuando utilizamos corchetes, podemos definir las posiciones de los elementos a que queremos acceder dentro de la tabla. El primer valor dentro del corchete se refiere a la línea y el segundo valor, a la columna.</p>
+                        <pre class="r"><code>paises[1,]</code></pre>
+                        <pre><code>##   Pais     Continente
+## 1 Peru América Latina</code></pre>
+                        <pre class="r"><code>paises[2,2]</code></pre>
+                        <pre><code>## [1] &quot;América Latina&quot;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div id="importación-de-datos" class="section level1">
+                <h1>Importación de datos</h1>
+                <p>Para realizar un análisis de datos en el mundo real, probablemente necesitará un conjunto de datos recogidos previamente que desee evaluar. Hay muchas formas de importar tablas de datos en R y aquí hablaremos de las más comunes.</p>
+                <div id="read.table" class="section level2">
+                    <h2>read.table</h2>
+                    <p>Puedes ingresar archivos tipo texto</p>
+                    <pre class="r"><code>mi_tabla = read.table(&quot;tabelas/Ant-Man.And.The.Wasp.txt&quot;, sep = &quot;\t&quot;)</code></pre>
+                </div>
+                <div id="read.delim" class="section level2">
+                    <h2>read.delim</h2>
+                    <p>Una otra opción para leer archivos texto:</p>
+                    <pre class="r"><code>mi_delim = read.delim(&quot;tabelas/Ant-Man.And.The.Wasp.txt&quot;, sep = &quot;\t&quot;, quote = &quot;&quot;)</code></pre>
+                </div>
+
+                </code>
+                </pre>
+            </div>
+            <div id="read.csv" class="section level2">
+                <h2>read.csv</h2>
+                <p>Para leer archivos separados por "," (.csv)</p>
+                <pre class="r"><code>mi_data = read.csv(&quot;tabelas/felicidad_america_latina.csv&quot;)
+str(mi_data)</code></pre>
+                <pre><code>## &#39;data.frame&#39;:    20 obs. of  5 variables:
+##  $ Country.name           : chr  &quot;Costa Rica&quot; &quot;Guatemala&quot; &quot;Uruguay&quot; &quot;Brazil&quot; ...
+##  $ Regional.indicator     : chr  &quot;Latin America and Caribbean&quot; &quot;Latin America and Caribbean&quot; &quot;Latin America and Caribbean&quot; &quot;Latin America and Caribbean&quot; ...
+##  $ Ladder.score           : num  7.07 6.43 6.43 6.33 6.32 ...
+##  $ Social.support         : num  0.891 0.813 0.925 0.882 0.831 0.877 0.896 0.882 0.762 0.847 ...
+##  $ Healthy.life.expectancy: num  71.4 65 69.1 66.6 68.6 ...</code></pre>
+                <p>És muy importante obvservar los argumentos de la función read.csv y también de read.table().</p>
+                <pre class="r"><code>#?read.csv()</code></pre>
+                <pre class="r"><code>mi_data = read.csv(file = &quot;tabelas/felicidad_america_latina.csv&quot;, header = T, sep = &quot;,&quot;, dec = &quot;.&quot;)</code></pre>
+                <pre class="r"><code>str(mi_data)</code></pre>
+                <pre><code>## &#39;data.frame&#39;:    20 obs. of  5 variables:
+##  $ Country.name           : chr  &quot;Costa Rica&quot; &quot;Guatemala&quot; &quot;Uruguay&quot; &quot;Brazil&quot; ...
+##  $ Regional.indicator     : chr  &quot;Latin America and Caribbean&quot; &quot;Latin America and Caribbean&quot; &quot;Latin America and Caribbean&quot; &quot;Latin America and Caribbean&quot; ...
+##  $ Ladder.score           : num  7.07 6.43 6.43 6.33 6.32 ...
+##  $ Social.support         : num  0.891 0.813 0.925 0.882 0.831 0.877 0.896 0.882 0.762 0.847 ...
+##  $ Healthy.life.expectancy: num  71.4 65 69.1 66.6 68.6 ...</code></pre>
+                <div class="alert alert-danger" role="alert">
+                    <p><strong>¡Atención!</strong>
+                        <hr> Se utiliza el Excel, puedes pasar de su archivo <i>csv</i> sea separado por ";" o sus casas decimales son separadas por “,”. Se define adecuadamente los argumentos da función, podrá importar eses archivos sin problemas. Así, se
+                        ve que el resultado de las funciones <i>head()</i> o <i>str()</i> parece inadecuado, verifica cuáles son los separadores de su archivo e intenta nuevamente la importación definiendo los argumentos <i>sep</i> y <i>dec</i> de la
+                        función read.csv().
+                    </p>
+                </div>
+            </div>
+            <div id="mi-primer-projecto" class="section level1">
+                <h1>Mi primer projecto</h1>
+                <p>Con RStudio puedes mantener tu trabajo organizado por proyectos. Así, si estás haciendo un análisis de datos para tu tesis, por ejemplo, puedes crear un proyecto para mantener todos los datos, el código, los resultados, el historial de
+                    análisis y los informes en un único directorio de fácil acceso.</p>
+                <p>Podemos hacer de este curso un proyecto en R. Así, todo lo que aprendas en estos días será fácil de encontrar y estudiar cuando quieras.</p>
+                <p>Te guiaré para crear tu primer proyecto en R.</p>
+            </div>
+            <hr>
                     <h3> Estructuras condicionales</h3>
                     <p><strong>If & else (Si & sino)</strong></p>
                     <p>Estructuras condicionales son dispositivos de lenguaje de programación para determinar qué bloque de código se ejecutará en una condición determinada.
