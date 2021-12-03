@@ -1,0 +1,76 @@
+---
+title: "Actividades practicas dia 2"
+author: "Guilherme"
+date: "8/30/2021"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+happines = read.csv("C:/Users/ghosa/OneDrive/Documentos/GitHub/cursoR/tabelas/world-happiness-report-2021.csv", sep = ",")
+```
+
+
+```{r}
+barplot(happines$Freedom.to.make.life.choices, ylim=c(0,1))
+```
+
+```{r  }
+barplot(happines$Freedom.to.make.life.choices, ylim=c(0,1), names.arg=happines$ï..Country.name, las=2)
+```
+
+```{r }
+barplot(happines$Freedom.to.make.life.choices, ylim=c(0,1), names.arg=happines$ï..Country.name, las=2, col = as.factor(happines$Regional.indicator))
+```
+
+```{r }
+
+matrix_felicidad = as.matrix(happines[,c(3,10)])
+
+rownames(matrix_felicidad)= happines$ï..Country.name
+
+```
+Mapa de calor - agrupados (clusterization)
+```{r }
+heatmap(matrix_felicidad, scale="column")
+
+```
+
+
+```{r }
+#Preparar un área para trazar dos gráficos
+par(mar=c(5, 1, 4, 18), xpd=TRUE)
+
+#Generacíon del gráfico
+plot(happines$Freedom.to.make.life.choices, happines$Ladder.score, 
+     col = as.factor(happines$Regional.indicator), #Colores
+     pch = 20, #diferentes formas
+     cex = 1) #tamaño del punto
+
+# Añade el subtítulo
+legend("topright", inset=c(-0.7, 0), legend=unique(happines$Regional.indicator), pch = 20, col = as.factor(unique(happines$Regional.indicator)), cex = 0.7)
+
+```
+
+Distribuicíon y frecuencia de los datos
+```{r }
+hist(happines$Freedom.to.make.life.choices, 
+     main = "Histogram", #Título
+     xlab = "Libertad de elección") #Nombre del eje x
+```
+
+```{r }
+#install.packages("vioplot")
+library(vioplot)
+
+vioplot(happines$Freedom.to.make.life.choices ~ happines$Regional.indicator,
+        col = as.factor(unique(happines$Regional.indicator)))
+```
+
+```{r }
+boxplot(happines$Freedom.to.make.life.choices ~ happines$Regional.indicator,
+        col = as.factor(unique(happines$Regional.indicator)))
+```
+
