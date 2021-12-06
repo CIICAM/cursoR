@@ -1,0 +1,84 @@
+---
+title: "Actividads practicas dia 3"
+author: "Ana Letycia"
+date: "06/12/2021"
+output: html_document
+---
+
+## Datos
+
+En esta actividad practiva vamos utilizar un conjunto de datos que hay la evaluación de refeiciones en restaurants de Lima en Peru.
+
+Puedes bajar el conjunto de datos [aqui](https://www.kaggle.com/jamesvandenberg/renewable-power-generation/download)
+
+Importa la tabla de datos utilizando la funcion read.csv()
+```{r}
+energy = read.csv("tabelas/energy/Continent_Consumption_TWH.csv")
+```
+
+```{r}
+str(energy)
+```
+
+Seleciona sólo las columnas Año, Mundo, Europa, America del Norte, America Latina, Asia, Africa e Medio Oeste y almacena en un nuevo objeto. 
+```{r}
+energy = energy[, c(1:2, 5:10)]
+```
+
+```{r}
+head(energy)
+```
+
+1. Cria um gráfico de barras mostrando el consumo mundial de energia desde 1990 hasta 2020. 
+```{r}
+barplot(energy$World, ylim = c(0, 200000),
+        names.arg = energy$Year,
+        las = 2)
+```
+
+Desafio:
+
+Haga un grafico de lineas con la misma informacion arriba. (Dica: utilice el ?plot para buscar ayjada para transformar el grafico en tipo "linea").
+
+```{r}
+plot(energy$Year, energy$World, type = "l")
+```
+
+2. América latina y altere los nombres del ejo x para Año y del ejo y para "Consumo de energía"
+```{r}
+barplot(energy$Latin.America, ylim = c(0, 10000),
+        names.arg = energy$Year,
+        las = 2,
+        xlab = "Año",
+        ylab = "Consumo de energía (TWH)")
+```
+
+3. Haga un heatmap con el consumo de energia en los paises en relacíon al consumo mundial. Acuaerdate de hacer una matriz con los dados que se desea hacer el grafico. 
+
+```{r}
+energy_mat = as.matrix(energy[,3:ncol(energy)])
+rownames(energy_mat) = energy$Year
+```
+
+```{r}
+heatmap(energy_mat, scale = "column")
+```
+
+Haga un grafico de puntos relacionando el consumo de energía en America latina y el consumo mundial. 
+
+```{r}
+plot(energy$World, energy$Latin.America)
+```
+
+```{r}
+energy2020 = energy[31,-c(1)]
+energy2020 = t(energy2020)
+colnames(energy2020) = "Energy Consumption in 2020"
+head(energy2020)
+energy2020 = as.data.frame(energy2020)
+str(energy2020)
+barplot(energy2020$`Energy Consumption in 2020`, ylim = c(0,200000),
+        names.arg = rownames(energy2020),
+        las = 2,
+        col = as.factor(rownames(energy2020)))
+```
