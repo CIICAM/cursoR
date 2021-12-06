@@ -69,7 +69,7 @@ Haga un grafico de puntos relacionando el consumo de energía en America latina 
 ```{r}
 plot(energy$World, energy$Latin.America)
 ```
-
+Hace un grafico con el consumo de energia por región en 2020. 
 ```{r}
 energy2020 = energy[31,-c(1)]
 energy2020 = t(energy2020)
@@ -82,3 +82,5 @@ barplot(energy2020$`Energy Consumption in 2020`, ylim = c(0,200000),
         las = 2,
         col = as.factor(rownames(energy2020)))
 ```
+
+# Loops (?)
