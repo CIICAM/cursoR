@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Curso R - Actividades prácticas del día 3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+            <a class="navbar-brand" href="index.html">Curso R</a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dias del curso
+          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="dia_1.html">Día 1</a>
+                            <a class="dropdown-item" href="dia_2.html">Día 2</a>
+                            <a class="dropdown-item " href="dia_3.html">Día 3</a>
+                            <a class="dropdown-item disabled" href="#">Día 4</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actividades prácticas
+          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="actividades_practicas_dia_1.html">Día 1</a>
+                            <a class="dropdown-item " href="actividades_practicas_dia_2.html">Día 2</a>
+                            <a class="dropdown-item disabled" href="#">Día 3</a>
+                            <a class="dropdown-item disabled" href="#">Día 4</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Enlaces que pueden ayudarte
+          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="https://stackoverflow.com/">Stackoverflow</a>
+                            <a class="dropdown-item" href="https://www.r-bloggers.com/">R-bloggers</a>
+                            <a class="dropdown-item" href="https://www.biostars.org/">Biostars</a>
+                            <a class="dropdown-item" href="https://github.com/">Github</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Quienes somos.html">Quienes somos</a>
+                    </li>
+                </ul>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <li class="nav-item">
+                        <a href="https://ciicam.com/">
+                            <img src="img/CIICAM.png" width="120">
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 my-3 p-3 bg-body rounded shadow-sm">
+            <div id="introdución" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="title toc-ignore">Actividades prácticas del día 3</h1>
+            </div>
+            <div id="Actividades_practicas" class="section level2 ">
+                <div class="alert alert-primary" role="alert">
+                    Consejos:
+                    <hr>
+                    <p>1. Cree um archivo Rmarkdown llamado “Actividad Práctica Día 3” con salida HTML. Actualice el título, su nombre y la fecha del documento. El primer día describimos cómo crear un archivo Rmarkdown, al que se puede acceder <a href="dia_1.html" class="alert-link"</a>aquí. </a></p>
+                    <p>2. Ejecute los códigos R dentro de las porciones de código R (<i>chuncks</i>). Fuera de ellos describe la actividad o la respuesta a las preguntas.</p>
+                    <p>3. Recuerde de las funciones de importación de datos. (Ex. read.csv). 
+                        El segun día describimos cómo importar un archivo de texto, al que se puede acceder <a href="dia_2.html#importación-de-datos" class="alert-link"</a>aquí. </a></p>
+                    <hr> 
+                    <p>Evaluaremos principalmente <strong> el desarrollo del <i>script</i> </strong> y el resultado final.</p>
+                    <p> <a href="https://classroom.google.com/c/MjgxMjY1MDgxODc2/a/NDMzNzU1MjU1NzIx/details" class="alert-link"</a>Sube aquí los archivos de la tercera actividad práctica. </a></p>
+                </div>
+                <p>
+                    En esta actividad utilizaremos un conjunto de datos que evalúan el consumo de energía en el mundo por continentes. En este ejercicio discutiremos algunos <strong> conceptos abordados en la lección
+                        del día 3 </strong> para facilitar la comprensión de los datos. Para descargar los datos haga <a href="tabelas/energy/Continent_Consumption_TWH.csv" class="alert-link">clic
+                        aquí</a>.
+                </p>
+                <p>
+                    <table class="styled-table" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+                        <thead>
+                            <tr>
+                              <th class="tg-cly1">Year</th>
+                              <th class="tg-cly1">World</th>
+                              <th class="tg-cly1">OECD</th>
+                              <th class="tg-cly1">BRICS</th>
+                              <th class="tg-cly1">Europe</th>
+                              <th class="tg-cly1">North America</th>
+                              <th class="tg-cly1">Latin America</th>
+                              <th class="tg-cly1">Asia</th>
+                              <th class="tg-cly1">Pacific</th>
+                              <th class="tg-cly1">Africa</th>
+                              <th class="tg-cly1">Middle-East</th>
+                              <th class="tg-cly1">CIS</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="tg-cly1">1990</td>
+                              <td class="tg-cly1">101855.54</td>
+                              <td class="tg-cly1">52602.49</td>
+                              <td class="tg-cly1">26621.07</td>
+                              <td class="tg-cly1">20654.88</td>
+                              <td class="tg-cly1">24667.23</td>
+                              <td class="tg-cly1">5373.06</td>
+                              <td class="tg-cly1">24574.19</td>
+                              <td class="tg-cly1">1197.89</td>
+                              <td class="tg-cly1">4407.77</td>
+                              <td class="tg-cly1">2581.86</td>
+                              <td class="tg-cly1">16049.4</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1991</td>
+                              <td class="tg-cly1">102483.56</td>
+                              <td class="tg-cly1">53207.25</td>
+                              <td class="tg-cly1">26434.99</td>
+                              <td class="tg-cly1">20631.62</td>
+                              <td class="tg-cly1">24841.68</td>
+                              <td class="tg-cly1">5500.99</td>
+                              <td class="tg-cly1">24783.53</td>
+                              <td class="tg-cly1">1186.26</td>
+                              <td class="tg-cly1">4535.7</td>
+                              <td class="tg-cly1">2744.68</td>
+                              <td class="tg-cly1">15898.21</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1992</td>
+                              <td class="tg-cly1">102588.23</td>
+                              <td class="tg-cly1">53788.75</td>
+                              <td class="tg-cly1">25993.05</td>
+                              <td class="tg-cly1">20189.68</td>
+                              <td class="tg-cly1">25341.77</td>
+                              <td class="tg-cly1">5628.92</td>
+                              <td class="tg-cly1">25690.67</td>
+                              <td class="tg-cly1">1209.52</td>
+                              <td class="tg-cly1">4582.22</td>
+                              <td class="tg-cly1">3081.95</td>
+                              <td class="tg-cly1">14339.79</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1993</td>
+                              <td class="tg-cly1">103646.56</td>
+                              <td class="tg-cly1">54614.48</td>
+                              <td class="tg-cly1">26283.8</td>
+                              <td class="tg-cly1">20189.68</td>
+                              <td class="tg-cly1">25830.23</td>
+                              <td class="tg-cly1">5675.44</td>
+                              <td class="tg-cly1">26876.93</td>
+                              <td class="tg-cly1">1267.67</td>
+                              <td class="tg-cly1">4721.78</td>
+                              <td class="tg-cly1">3349.44</td>
+                              <td class="tg-cly1">13246.57</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1994</td>
+                              <td class="tg-cly1">104449.03</td>
+                              <td class="tg-cly1">55579.77</td>
+                              <td class="tg-cly1">25993.05</td>
+                              <td class="tg-cly1">20085.01</td>
+                              <td class="tg-cly1">26365.21</td>
+                              <td class="tg-cly1">5989.45</td>
+                              <td class="tg-cly1">28098.08</td>
+                              <td class="tg-cly1">1279.3</td>
+                              <td class="tg-cly1">4803.19</td>
+                              <td class="tg-cly1">3640.19</td>
+                              <td class="tg-cly1">11606.74</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1995</td>
+                              <td class="tg-cly1">107112.3</td>
+                              <td class="tg-cly1">56754.4</td>
+                              <td class="tg-cly1">26946.71</td>
+                              <td class="tg-cly1">20713.03</td>
+                              <td class="tg-cly1">26714.11</td>
+                              <td class="tg-cly1">6024.34</td>
+                              <td class="tg-cly1">29761.17</td>
+                              <td class="tg-cly1">1290.93</td>
+                              <td class="tg-cly1">5000.9</td>
+                              <td class="tg-cly1">3744.86</td>
+                              <td class="tg-cly1">11188.06</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1996</td>
+                              <td class="tg-cly1">109763.94</td>
+                              <td class="tg-cly1">58417.49</td>
+                              <td class="tg-cly1">27481.69</td>
+                              <td class="tg-cly1">21445.72</td>
+                              <td class="tg-cly1">27295.61</td>
+                              <td class="tg-cly1">6303.46</td>
+                              <td class="tg-cly1">30772.98</td>
+                              <td class="tg-cly1">1372.34</td>
+                              <td class="tg-cly1">5152.09</td>
+                              <td class="tg-cly1">3814.64</td>
+                              <td class="tg-cly1">10850.79</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1997</td>
+                              <td class="tg-cly1">110903.68</td>
+                              <td class="tg-cly1">59022.25</td>
+                              <td class="tg-cly1">27446.8</td>
+                              <td class="tg-cly1">21341.05</td>
+                              <td class="tg-cly1">27574.73</td>
+                              <td class="tg-cly1">6570.95</td>
+                              <td class="tg-cly1">31435.89</td>
+                              <td class="tg-cly1">1407.23</td>
+                              <td class="tg-cly1">5280.02</td>
+                              <td class="tg-cly1">4058.87</td>
+                              <td class="tg-cly1">10373.96</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1998</td>
+                              <td class="tg-cly1">111450.29</td>
+                              <td class="tg-cly1">59219.96</td>
+                              <td class="tg-cly1">27528.21</td>
+                              <td class="tg-cly1">21503.87</td>
+                              <td class="tg-cly1">27772.44</td>
+                              <td class="tg-cly1">6803.55</td>
+                              <td class="tg-cly1">31331.22</td>
+                              <td class="tg-cly1">1442.12</td>
+                              <td class="tg-cly1">5431.21</td>
+                              <td class="tg-cly1">4082.13</td>
+                              <td class="tg-cly1">10152.99</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">1999</td>
+                              <td class="tg-cly1">113974</td>
+                              <td class="tg-cly1">60301.55</td>
+                              <td class="tg-cly1">28319.05</td>
+                              <td class="tg-cly1">21306.16</td>
+                              <td class="tg-cly1">28528.39</td>
+                              <td class="tg-cly1">6989.63</td>
+                              <td class="tg-cly1">32412.81</td>
+                              <td class="tg-cly1">1477.01</td>
+                              <td class="tg-cly1">5559.14</td>
+                              <td class="tg-cly1">4244.95</td>
+                              <td class="tg-cly1">10373.96</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2000</td>
+                              <td class="tg-cly1">116590.75</td>
+                              <td class="tg-cly1">61685.52</td>
+                              <td class="tg-cly1">28923.81</td>
+                              <td class="tg-cly1">21538.76</td>
+                              <td class="tg-cly1">29342.49</td>
+                              <td class="tg-cly1">7024.52</td>
+                              <td class="tg-cly1">33564.18</td>
+                              <td class="tg-cly1">1500.27</td>
+                              <td class="tg-cly1">5617.29</td>
+                              <td class="tg-cly1">4314.73</td>
+                              <td class="tg-cly1">10501.89</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2001</td>
+                              <td class="tg-cly1">117521.15</td>
+                              <td class="tg-cly1">61452.92</td>
+                              <td class="tg-cly1">29528.57</td>
+                              <td class="tg-cly1">21934.18</td>
+                              <td class="tg-cly1">28795.88</td>
+                              <td class="tg-cly1">7036.15</td>
+                              <td class="tg-cly1">34227.09</td>
+                              <td class="tg-cly1">1477.01</td>
+                              <td class="tg-cly1">5756.85</td>
+                              <td class="tg-cly1">4663.63</td>
+                              <td class="tg-cly1">10571.67</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2002</td>
+                              <td class="tg-cly1">120207.68</td>
+                              <td class="tg-cly1">61987.9</td>
+                              <td class="tg-cly1">30552.01</td>
+                              <td class="tg-cly1">21969.07</td>
+                              <td class="tg-cly1">29156.41</td>
+                              <td class="tg-cly1">7280.38</td>
+                              <td class="tg-cly1">35680.84</td>
+                              <td class="tg-cly1">1523.53</td>
+                              <td class="tg-cly1">5849.89</td>
+                              <td class="tg-cly1">4884.6</td>
+                              <td class="tg-cly1">10653.08</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2003</td>
+                              <td class="tg-cly1">124464.26</td>
+                              <td class="tg-cly1">62871.78</td>
+                              <td class="tg-cly1">33157.13</td>
+                              <td class="tg-cly1">22515.68</td>
+                              <td class="tg-cly1">29377.38</td>
+                              <td class="tg-cly1">7501.35</td>
+                              <td class="tg-cly1">38181.29</td>
+                              <td class="tg-cly1">1535.16</td>
+                              <td class="tg-cly1">6140.64</td>
+                              <td class="tg-cly1">4954.38</td>
+                              <td class="tg-cly1">11036.87</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2004</td>
+                              <td class="tg-cly1">129953.62</td>
+                              <td class="tg-cly1">64058.04</td>
+                              <td class="tg-cly1">35994.85</td>
+                              <td class="tg-cly1">22748.28</td>
+                              <td class="tg-cly1">29993.77</td>
+                              <td class="tg-cly1">7780.47</td>
+                              <td class="tg-cly1">41437.69</td>
+                              <td class="tg-cly1">1558.42</td>
+                              <td class="tg-cly1">6466.28</td>
+                              <td class="tg-cly1">5245.13</td>
+                              <td class="tg-cly1">11188.06</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2005</td>
+                              <td class="tg-cly1">133582.18</td>
+                              <td class="tg-cly1">64453.46</td>
+                              <td class="tg-cly1">38169.66</td>
+                              <td class="tg-cly1">22864.58</td>
+                              <td class="tg-cly1">30168.22</td>
+                              <td class="tg-cly1">8059.59</td>
+                              <td class="tg-cly1">43693.91</td>
+                              <td class="tg-cly1">1570.05</td>
+                              <td class="tg-cly1">6652.36</td>
+                              <td class="tg-cly1">5675.44</td>
+                              <td class="tg-cly1">11222.95</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2006</td>
+                              <td class="tg-cly1">137396.82</td>
+                              <td class="tg-cly1">64616.28</td>
+                              <td class="tg-cly1">40670.11</td>
+                              <td class="tg-cly1">23108.81</td>
+                              <td class="tg-cly1">29958.88</td>
+                              <td class="tg-cly1">8303.82</td>
+                              <td class="tg-cly1">46124.58</td>
+                              <td class="tg-cly1">1616.57</td>
+                              <td class="tg-cly1">6861.7</td>
+                              <td class="tg-cly1">5989.45</td>
+                              <td class="tg-cly1">11548.59</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2007</td>
+                              <td class="tg-cly1">141211.46</td>
+                              <td class="tg-cly1">64883.77</td>
+                              <td class="tg-cly1">43112.41</td>
+                              <td class="tg-cly1">22829.69</td>
+                              <td class="tg-cly1">30424.08</td>
+                              <td class="tg-cly1">8571.31</td>
+                              <td class="tg-cly1">48555.25</td>
+                              <td class="tg-cly1">1663.09</td>
+                              <td class="tg-cly1">7129.19</td>
+                              <td class="tg-cly1">6315.09</td>
+                              <td class="tg-cly1">11664.89</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2008</td>
+                              <td class="tg-cly1">142874.55</td>
+                              <td class="tg-cly1">64034.78</td>
+                              <td class="tg-cly1">44635.94</td>
+                              <td class="tg-cly1">22829.69</td>
+                              <td class="tg-cly1">29644.87</td>
+                              <td class="tg-cly1">8780.65</td>
+                              <td class="tg-cly1">49636.84</td>
+                              <td class="tg-cly1">1721.24</td>
+                              <td class="tg-cly1">7443.2</td>
+                              <td class="tg-cly1">6850.07</td>
+                              <td class="tg-cly1">11874.23</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2009</td>
+                              <td class="tg-cly1">141490.58</td>
+                              <td class="tg-cly1">61197.06</td>
+                              <td class="tg-cly1">46426.96</td>
+                              <td class="tg-cly1">21608.54</td>
+                              <td class="tg-cly1">28214.38</td>
+                              <td class="tg-cly1">8559.68</td>
+                              <td class="tg-cly1">51858.17</td>
+                              <td class="tg-cly1">1721.24</td>
+                              <td class="tg-cly1">7606.02</td>
+                              <td class="tg-cly1">7059.41</td>
+                              <td class="tg-cly1">10967.09</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2010</td>
+                              <td class="tg-cly1">149294.31</td>
+                              <td class="tg-cly1">63255.57</td>
+                              <td class="tg-cly1">50323.01</td>
+                              <td class="tg-cly1">22469.16</td>
+                              <td class="tg-cly1">28830.77</td>
+                              <td class="tg-cly1">9117.92</td>
+                              <td class="tg-cly1">56010.08</td>
+                              <td class="tg-cly1">1732.87</td>
+                              <td class="tg-cly1">7803.73</td>
+                              <td class="tg-cly1">7361.79</td>
+                              <td class="tg-cly1">11804.45</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2011</td>
+                              <td class="tg-cly1">151783.13</td>
+                              <td class="tg-cly1">62127.46</td>
+                              <td class="tg-cly1">53207.25</td>
+                              <td class="tg-cly1">21794.62</td>
+                              <td class="tg-cly1">28598.17</td>
+                              <td class="tg-cly1">9304</td>
+                              <td class="tg-cly1">58324.45</td>
+                              <td class="tg-cly1">1744.5</td>
+                              <td class="tg-cly1">8117.74</td>
+                              <td class="tg-cly1">7524.61</td>
+                              <td class="tg-cly1">12164.98</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2012</td>
+                              <td class="tg-cly1">153748.6</td>
+                              <td class="tg-cly1">61685.52</td>
+                              <td class="tg-cly1">54975.01</td>
+                              <td class="tg-cly1">21689.95</td>
+                              <td class="tg-cly1">28167.86</td>
+                              <td class="tg-cly1">9594.75</td>
+                              <td class="tg-cly1">60022.43</td>
+                              <td class="tg-cly1">1744.5</td>
+                              <td class="tg-cly1">8303.82</td>
+                              <td class="tg-cly1">7943.29</td>
+                              <td class="tg-cly1">12269.65</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2013</td>
+                              <td class="tg-cly1">155958.3</td>
+                              <td class="tg-cly1">62080.94</td>
+                              <td class="tg-cly1">56068.23</td>
+                              <td class="tg-cly1">21480.61</td>
+                              <td class="tg-cly1">28667.95</td>
+                              <td class="tg-cly1">9978.54</td>
+                              <td class="tg-cly1">61499.44</td>
+                              <td class="tg-cly1">1767.76</td>
+                              <td class="tg-cly1">8431.75</td>
+                              <td class="tg-cly1">8071.22</td>
+                              <td class="tg-cly1">12002.16</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2014</td>
+                              <td class="tg-cly1">157667.91</td>
+                              <td class="tg-cly1">61499.44</td>
+                              <td class="tg-cly1">57405.68</td>
+                              <td class="tg-cly1">20689.77</td>
+                              <td class="tg-cly1">29063.37</td>
+                              <td class="tg-cly1">9943.65</td>
+                              <td class="tg-cly1">62895.04</td>
+                              <td class="tg-cly1">1767.76</td>
+                              <td class="tg-cly1">8896.95</td>
+                              <td class="tg-cly1">8513.16</td>
+                              <td class="tg-cly1">11699.78</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2015</td>
+                              <td class="tg-cly1">158086.59</td>
+                              <td class="tg-cly1">61511.07</td>
+                              <td class="tg-cly1">57533.61</td>
+                              <td class="tg-cly1">21038.67</td>
+                              <td class="tg-cly1">28784.25</td>
+                              <td class="tg-cly1">9873.87</td>
+                              <td class="tg-cly1">63476.54</td>
+                              <td class="tg-cly1">1767.76</td>
+                              <td class="tg-cly1">8838.8</td>
+                              <td class="tg-cly1">8675.98</td>
+                              <td class="tg-cly1">11222.95</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2016</td>
+                              <td class="tg-cly1">159377.52</td>
+                              <td class="tg-cly1">61545.96</td>
+                              <td class="tg-cly1">57742.95</td>
+                              <td class="tg-cly1">21224.75</td>
+                              <td class="tg-cly1">28563.28</td>
+                              <td class="tg-cly1">9745.94</td>
+                              <td class="tg-cly1">63941.74</td>
+                              <td class="tg-cly1">1767.76</td>
+                              <td class="tg-cly1">9106.29</td>
+                              <td class="tg-cly1">8862.06</td>
+                              <td class="tg-cly1">11595.11</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2017</td>
+                              <td class="tg-cly1">162459.47</td>
+                              <td class="tg-cly1">61929.75</td>
+                              <td class="tg-cly1">59429.3</td>
+                              <td class="tg-cly1">21620.17</td>
+                              <td class="tg-cly1">28563.28</td>
+                              <td class="tg-cly1">9687.79</td>
+                              <td class="tg-cly1">65721.13</td>
+                              <td class="tg-cly1">1791.02</td>
+                              <td class="tg-cly1">9304</td>
+                              <td class="tg-cly1">9210.96</td>
+                              <td class="tg-cly1">11792.82</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2018</td>
+                              <td class="tg-cly1">166297.37</td>
+                              <td class="tg-cly1">62592.66</td>
+                              <td class="tg-cly1">61673.89</td>
+                              <td class="tg-cly1">21399.2</td>
+                              <td class="tg-cly1">29470.42</td>
+                              <td class="tg-cly1">9513.34</td>
+                              <td class="tg-cly1">68035.5</td>
+                              <td class="tg-cly1">1791.02</td>
+                              <td class="tg-cly1">9559.86</td>
+                              <td class="tg-cly1">9257.48</td>
+                              <td class="tg-cly1">12385.95</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2019</td>
+                              <td class="tg-cly1">167553.41</td>
+                              <td class="tg-cly1">61825.08</td>
+                              <td class="tg-cly1">63255.57</td>
+                              <td class="tg-cly1">21061.93</td>
+                              <td class="tg-cly1">29249.45</td>
+                              <td class="tg-cly1">9478.45</td>
+                              <td class="tg-cly1">69582.29</td>
+                              <td class="tg-cly1">1802.65</td>
+                              <td class="tg-cly1">9641.27</td>
+                              <td class="tg-cly1">9455.19</td>
+                              <td class="tg-cly1">12490.62</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-cly1">2020</td>
+                              <td class="tg-cly1">160819.64</td>
+                              <td class="tg-cly1">57487.09</td>
+                              <td class="tg-cly1">63162.53</td>
+                              <td class="tg-cly1">19643.07</td>
+                              <td class="tg-cly1">27063.01</td>
+                              <td class="tg-cly1">8815.54</td>
+                              <td class="tg-cly1">69256.65</td>
+                              <td class="tg-cly1">1767.76</td>
+                              <td class="tg-cly1">9408.67</td>
+                              <td class="tg-cly1">9338.89</td>
+                              <td class="tg-cly1">11804.45</td>
+                            </tr>
+                          </tbody>
+                    </table>
+                </p>
+                <p><strong>Preguntas:</strong></p>
+                <p>1. Importe la tabla de datos utilizando la función read.csv() y evalúe la estructura de los datos.  Seleciona sólo las columnas Año, Mundo, Europa, America del Norte, America Latina, Asia, Africa e Medio Oeste y almacena en un nuevo objeto.</p>
+                <p>2. Crea un gráfico de barras que muestre el consumo mundial de energía desde 1990 hasta 2020. <br> Nota: No olvides poner los años y girar 90 grados para que aparezcan todos los años.</p>
+                <div class="alert alert-info" role="alert">
+                    <strong>Desafío:</strong> Haga un gráfico de líneas con la misma información arriba. (Consejo: utilice el ?plot para buscar ayuda para transformar el gráfico en tipo “línea”).
+                  </div>    
+
+                    <p>3. Crea el gráfico de 1999 a 2020 considerando solo América Latina. </p>
+                    <p>4. Haga un heatmap con el consumo de energia en los paises en relacíon al consumo de los continentes (America Latina, America do Norte, Europa, CIS, …). Acuaerdate de hacer una matriz con los dados que se desea hacer el grafico (funcion as.matrix). </p>
+                    <br>
+                    <p>6. ¿Cuántas especies tienen más aves en comparación con los mamíferos en 2019? </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseThree">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseThree" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>1298</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>7. Porcentaje de los números de especies respectivas para el año 2019. </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseFour">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseFour" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>Anfibios   2.487187
+Reptiles    1.883269
+Aves    7.378124
+Mamíferos   2.220986    
+Peces continentales 4.533355
+Peces marinos   4.330724
+Angiospermas y gimnospermas 77.16636</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>8. ¿Cuál es la razón del número total de especies para 2019 y 2010?</p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseFive">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseFive" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>0.9190671</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>9. ¿Es el número de especies de aves en 2016 mayor que la suma del número de peces de 2012 a 2016? (Logico) </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseSix">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseSix" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>FALSE</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <br>
+                    <p>10. Imaginemos que el número de especies de peces marinos ha aumentado exponencialmente cada diez años. Crea una tabla con las proyecciones del aumento de especies hasta 2079, cada 10 años, a partir de 2019. Guarde esta tabla en un
+                        archivo csv.
+                    </p>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseSeven">
+                                Resultado esperado:
+                            </a>
+                            </div>
+                            <div id="collapseSeven" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <pre>2029 1188100 <br>2039 1.411582e+12 <br>2049 1.992563e+24 <br>2059 3.970306e+48 <br>2069 1.576333e+97 <br>2079 2.484825e+194</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <!-- Always remember to call the above files first before calling the bootstrap.min.js file -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+    <SCRIPT SRC='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></SCRIPT>
+    <SCRIPT>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [
+                    ['$', '$'],
+                    ['\\(', '\\)']
+                ]
+            }
+        })
+    </SCRIPT>
+    <script>
+        $('.collapse').collapse()
+    </script>
+</body>
+
+</html>

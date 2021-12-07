@@ -13,7 +13,7 @@ Puedes bajar el conjunto de datos [aqui](https://www.kaggle.com/jamesvandenberg/
 
 Importa la tabla de datos utilizando la funcion read.csv()
 ```{r}
-energy = read.csv("tabelas/energy/Continent_Consumption_TWH.csv")
+energy = read.csv("../tabelas/energy/Continent_Consumption_TWH.csv")
 ```
 
 ```{r}
@@ -53,7 +53,7 @@ barplot(energy$Latin.America, ylim = c(0, 10000),
         ylab = "Consumo de energía (TWH)")
 ```
 
-3. Haga un heatmap con el consumo de energia en los paises en relacíon al consumo mundial. Acuaerdate de hacer una matriz con los dados que se desea hacer el grafico. 
+3. Haga un heatmap con el consumo de energia en los paises en relacíon al consumo de los continentes (America Latina, America do Norte, Europa, CIS, ...). Acuaerdate de hacer una matriz con los dados que se desea hacer el grafico (funcion as.matrix). 
 
 ```{r}
 energy_mat = as.matrix(energy[,3:ncol(energy)])
