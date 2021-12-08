@@ -29,6 +29,20 @@ energy = energy[, c(1:2, 5:10)]
 head(energy)
 ```
 
+
+```{r}
+energy_latam = energy[,c(1,5)]
+promedio = mean(energy_latam$Latin.America)
+
+for (i in 1:length(rownames(energy_latam))){
+        if (energy_latam$Latin.America[i] > promedio){
+                energy_latam$Consumo[i] = "Consumimos mucha energía"
+        } else{
+               energy_latam$Consumo[i] = "Consumimos poca energía" 
+        }
+}
+```
+
 1. Cria um gráfico de barras mostrando el consumo mundial de energia desde 1990 hasta 2020. 
 ```{r}
 barplot(energy$World, ylim = c(0, 200000),
@@ -70,6 +84,12 @@ Haga un grafico de puntos relacionando el consumo de energía en America latina 
 plot(energy$World, energy$Latin.America)
 ```
 Hace un grafico con el consumo de energia por región en 2020. 
+
+```{r}
+energy_sub_year = energy_mat[31,]
+barplot(energy_sub_year, col = factor(names(energy_sub_year)))
+```
+
 ```{r}
 energy2020 = energy[31,-c(1)]
 energy2020 = t(energy2020)
