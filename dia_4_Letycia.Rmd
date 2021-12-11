@@ -57,14 +57,18 @@ aggregate(Indice_felicidad ~ Region, data = felicidad, FUN = mean)
 ```
 
 ```{r}
-aggregate(Indice_felicidad ~ Region, data = felicidad, FUN = mean)
+aggregate(Indice_felicidad ~ Region, data = felicidad, FUN = sd)
 ```
 
-# Teste de hipotesis
+# Prueba de hipotesis
 
-Una hipótesis es una suposición que se haz sobre algun fenômeno en una condición específica. 
+Una hipótesis es una suposición que se hace sobre algo en una condición. Generalmente, se refiere a un hecho común o a un hecho ya aceptado. 
 
-(1) Hipótesis nula, es decir, las medias de la población son iguales: (2) Hipótesis alternativa, las medias de la población son diferentes, o al menos una de las medias es diferente de las demás.
+La hipótesis nula se refiere a que cualquier cambio que se produzca en un objeto de estudio se debe al azar y no hay ningún efecto específico. Por lo tanto, se considera, por ejemplo, que las medias serán iguales, aunque las condiciones sean diferentes.
+
+La hipótesis alternativa indica que el cambio en el objeto de estudio puede deberse a alguna condición específica y no solo al azar. Por los tanto, la hipótesis alternativa considera que la media del fenómeno en la condición 1 es diferente de la media del fenómeno en la condición 2. 
+
+Las pruebas de hipótesis nos permiten realizar comparaciones para tomar la decisión de rechazar o no la hipótesis nula y decir si una alteración que se produce en nuestro objeto de estudio se debe al azar o si hay algún factor específico que influye en estas alteraciones. .
 
 ## Evaluando la normalid de los datos
 ```{r}
@@ -81,28 +85,75 @@ ic_95_med = t.test(felicidad$Indice_felicidad, conf.level=.95)
 ic_95_med   
 ```
 
-## Test t
-```{r}
-
-```
-
-
 ## Análisis de varianza
 
-El análisis tiene como objetivo fundamental comprobar si existe una diferencia significativa entre las medias y si los factores ejercen influencia sobre alguna variable dependiente. La comprobación de la existencia de una diferencia significativa permite comparar varios grupos al mismo tiempo. Es decir, el análisis de la varianza se utiliza cuando se quiere decidir si las diferencias muestrales observadas son reales (causadas por diferencias significativas en las poblaciones observadas) o casuales (derivadas de la mera variabilidad muestral).
+Existen varios métodos para comprobar las hipótesis. Aquí hablaremos del **análisis de la varianza**. Con este análisis es posible definir qué variables tienen un efecto significativo sobre el objeto de estudio. La decisión de rechazar o no la hipótesis nula, se hace con base en un valor p comparado con un valor de confianza, que se llama alfa.
 
- parte do pressuposto que o acaso só produz pequenos desvios, sendo as grandes diferenças geradas por causas reais. 
+La **análisis de varianza** permite comparar varios grupos al mismo tiempo para un mismo efecto y asume que el azar solo produce pequeñas desviaciones, mientras que las grandes diferencias son generadas por causas reales. 
 
 ### Suposiciones de la análise de varianza
 
 * Las variables son independientes dentre si
-* Las distribuiciones de cada variable se aproxima de una distribuición normal
-* Las varianzas de cada variable son aproximadament iguales
-* La variable depeniente es contínua
+* Las distribuiciones de cada variable (y de los errores) se aproxima de una distribuición normal
+* Las varianzas de cada variable son aproximadament iguales 
+* La variable dependiente es contínua
 
+Comprobaremos la hipótesis nula de que todas las regiones del mundo tienen índices de felicidad similares, es decir, que cualquier variación en el índice se debe al azar y no al efecto de la región en la que se encuentra un país. 
 
+Creando un modelo matematico:
+```{r}
+modelo = lm(felicidad$Indice_felicidad ~ felicidad$Region)
+```
 
 ```{r}
-
+modelo
 ```
+
+### Diagnóstico del modelo
+```{r}
+plot(modelo)
+```
+
+## La analisis de varianza
+```{r}
+anova(modelo)
+```
+
+# Test de Tukey (comparación de las médias en pares)
+
+Para hacer la prueba de medias utilizando el test de Tukey, vamos utizar una función del paquete *agricolae*. Para eso, instale el paquele con la función `install.packages()`
+```{r}
+library(agricolae)
+```
+
+```{r}
+tukey = HSD.test(modelo, 'felicidad$Region', alpha = 0.05)
+tukey
+```
+
+tukey = HSD.test(modelo, 'datos$mes')
+tukey
+
+<!-- ### Comparasiones multiplas  -->
+<!-- ```{r} -->
+<!-- install.packages("emmeans") -->
+<!-- library("emmeans") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- modelo_means = emmeans(modelo, "Region") -->
+<!-- modelo_means -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- plot(modelo_means) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- pairs(modelo_means) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- plot(modelo_means, comparisons = TRUE) -->
+<!-- ``` -->
 
