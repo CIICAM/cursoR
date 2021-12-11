@@ -51,22 +51,28 @@ library(dplyr)
 ```{r}
 felicidad = felicidad %>% 
   group_by(Region) %>% 
-  sample_n(4)
+  sample_n(4, replace = F)
 
 write.csv(felicidad, "tabelas/felicidad_red.csv", quote = F, row.names = F)
 ```
 
-
-
-
-
-
 ## Estadísticas descritivas básicas de los datos
+
+```{r}
+felicidad = read.csv("tabelas/felicidad_red.csv")
+```
+
+```{r}
+felicidad
+```
 
 Vamos evaluar la variable Indice_felicidad
 ```{r}
 felicidad[sort(felicidad$Indice_felicidad),]
+```
 
+
+```{r}
 str(felicidad)
 
 aggregate(felicidad$Region ~ Indice_felicidad, data = felicidad, FUN = sample)
