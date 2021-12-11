@@ -7,55 +7,6 @@ output: html_document
 
 # Análises estatadísticas básicas en R
 
-## Organizando el conjunto de datos de trabajo
-```{r}
-felicidad = read.csv("tabelas/world-happiness-report-2021.csv")
-```
-
-```{r}
-str(felicidad)
-```
-
-Cambiando una variable del tipo caracter para variable factor
-```{r}
-felicidad$Regional.indicator = as.factor(felicidad$Regional.indicator)
-```
-
-Selecionamos solo las columns de interese
-```{r}
-felicidad = felicidad[,c(1:3,8:12)]
-names(felicidad)
-```
-
-Cambiando los nombres de las columnas
-```{r}
-colnames(felicidad) = c("Pais", "Region", "Indice_felicidad", "Suporte_social", "Expectativa_de_vida", "Liberdad_de_escojas", "Generosidad", "Percepcion_de_corrupcion")
-```
-
-```{r}
-head(felicidad)
-```
-
-Vamos trabajar com algunos paises por region, y para eso, vamos escojer cinco paises aleatoriamente por región.
-
-```{r}
-levels(felicidad$Region)
-```
-
-```{r}
-df = data.frame()
-
-library(dplyr)
-```
-
-```{r}
-felicidad = felicidad %>% 
-  group_by(Region) %>% 
-  sample_n(4, replace = F)
-
-write.csv(felicidad, "tabelas/felicidad_red.csv", quote = F, row.names = F)
-```
-
 ## Estadísticas descritivas básicas de los datos
 
 ```{r}
@@ -66,29 +17,92 @@ felicidad = read.csv("tabelas/felicidad_red.csv")
 felicidad
 ```
 
-Vamos evaluar la variable Indice_felicidad
+Vamos evaluar la variable Indice_felicidad:
+
+Podemos ordenar la tabla por el indice de felicidad
 ```{r}
-felicidad[sort(felicidad$Indice_felicidad),]
+felicidad[order(felicidad$Indice_felicidad),]
+```
+
+```{r}
+dim(felicidad)
+```
+
+Resumen estadístico
+```{r}
+summary(felicidad)
+```
+
+Media
+```{r}
+mean(felicidad$Indice_felicidad)
 ```
 
 
 ```{r}
-str(felicidad)
-
-aggregate(felicidad$Region ~ Indice_felicidad, data = felicidad, FUN = sample)
+median(felicidad$Indice_felicidad)
 ```
-
 
 ```{r}
-summary(altura)
-length(altura)
-mean(altura)
-var(altura)
-median(altura)
-max(altura)
-min(altura)
-range(altura)
+var(felicidad$Indice_felicidad)
 ```
 
+```{r}
+range(felicidad$Indice_felicidad)
+```
+
+El media de felicidad de todas las regiones
+```{r}
+aggregate(Indice_felicidad ~ Region, data = felicidad, FUN = mean)
+```
+
+```{r}
+aggregate(Indice_felicidad ~ Region, data = felicidad, FUN = mean)
+```
 
 # Teste de hipotesis
+
+Una hipótesis es una suposición que se haz sobre algun fenômeno en una condición específica. 
+
+(1) Hipótesis nula, es decir, las medias de la población son iguales: (2) Hipótesis alternativa, las medias de la población son diferentes, o al menos una de las medias es diferente de las demás.
+
+## Evaluando la normalid de los datos
+```{r}
+shapiro.test(felicidad$Indice_felicidad)   # (Shapiro-Wilk)
+```
+
+```{r}
+qqnorm(felicidad$Indice_felicidad)         # Q-Q plot
+```
+
+## Intervalo de confianza
+```{r}
+ic_95_med = t.test(felicidad$Indice_felicidad, conf.level=.95)
+ic_95_med   
+```
+
+## Test t
+```{r}
+
+```
+
+
+## Análisis de varianza
+
+El análisis tiene como objetivo fundamental comprobar si existe una diferencia significativa entre las medias y si los factores ejercen influencia sobre alguna variable dependiente. La comprobación de la existencia de una diferencia significativa permite comparar varios grupos al mismo tiempo. Es decir, el análisis de la varianza se utiliza cuando se quiere decidir si las diferencias muestrales observadas son reales (causadas por diferencias significativas en las poblaciones observadas) o casuales (derivadas de la mera variabilidad muestral).
+
+ parte do pressuposto que o acaso só produz pequenos desvios, sendo as grandes diferenças geradas por causas reais. 
+
+### Suposiciones de la análise de varianza
+
+* Las variables son independientes dentre si
+* Las distribuiciones de cada variable se aproxima de una distribuición normal
+* Las varianzas de cada variable son aproximadament iguales
+* La variable depeniente es contínua
+
+
+
+```{r}
+
+```
+
