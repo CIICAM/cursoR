@@ -1,0 +1,56 @@
+---
+title: "grafico de barras con desviacion standar"
+output: html_document
+---
+
+```{r}
+library(plotrix)
+setwd("C:/Users/ghosa/OneDrive/Documentos/GitHub/cursoR/tabelas")
+
+happiness = 
+  read.delim("felicidad_red.csv", sep = ",")
+
+```
+
+```{r}
+hist(happiness$Indice_felicidad, main = "Histograma",
+     xlab = "Indice felicidad")
+```
+
+```{r}
+barplot(happiness$Indice_felicidad, ylim=c(0,8), names.arg=happiness$Pais, las=2)
+
+regiones = c()
+
+regiones$names = unique(happiness$Region)
+
+for (i in 1:length(regiones$names)){
+  
+  print(regiones$names[i])
+  regiones$media[i] = mean(happiness$Indice_felicidad[happiness$Region == regiones$names[i] ])
+  regiones$erro[i] = sd(happiness$Indice_felicidad[happiness$Region == regiones$names[i] ])/sqrt(length(happiness$Indice_felicidad))
+  
+}
+
+x = barplot(regiones$media,beside=T,ylim=c(0,8),ylab="score", 
+            names.arg = regiones$names,
+            las = 2,
+            col = as.factor(unique(regiones$names)))
+
+arrows(x0=x,y0=regiones$media-regiones$erro,
+       x1=x,y1=regiones$media+regiones$erro,
+       angle=90,length=0.14,code=3)
+```
+
+```{r}
+boxplot(happiness$Indice_felicidad ~ happiness$Region,
+        col = as.factor(unique(happiness$Region)))
+```
+
+```{r}
+library(vioplot)
+
+vioplot(happiness$Indice_felicidad ~ happiness$Region,
+                                col = as.factor(unique(happiness$Region)))
+```
+
