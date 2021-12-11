@@ -1,7 +1,7 @@
 setwd("C:/Users/ghosa/OneDrive/Documentos/GitHub/cursoR/tabelas")
 
 happiness = 
-  read.delim("felicidad_red.csv", sep = ",")
+  read.csv("felicidad_red.csv")
 
 barplot(happiness$Indice_felicidad, ylim=c(0,8), names.arg=happiness$Pais, las=2)
 
