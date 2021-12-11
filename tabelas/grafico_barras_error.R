@@ -1,9 +1,9 @@
 setwd("C:/Users/ghosa/OneDrive/Documentos/GitHub/cursoR/tabelas")
 
 happiness = 
-  read.delim("world-happiness-report-2021.csv", sep = ",")
+  read.delim("tabelas/world-happiness-report-2021.csv", sep = ",")
 
-barplot(happiness$Freedom.to.make.life.choices, ylim=c(0,1), names.arg=happiness$ï..Country.name, las=2)
+barplot(happiness$Freedom.to.make.life.choices, ylim=c(0,1), names.arg=happiness$Ã¯..Country.name, las=2)
 
 regiones = c()
 
@@ -25,3 +25,4 @@ x = barplot(regiones$media,beside=T,ylim=c(0,1),ylab="score",
 arrows(x0=x,y0=regiones$media-regiones$desvio,
        x1=x,y1=regiones$media+regiones$desvio,
        angle=90,length=0.14,code=3)
+
