@@ -76,6 +76,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Quienes somos.html">Quienes somos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Manual de R.pdf"> <strong>Manual del curso</strong></a>
+                    </li>
                 </ul>
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <li class="nav-item">
@@ -201,9 +204,9 @@ class(i2)</code></pre>
                         <pre class="r"><code>formacion[which(formacion == &quot;Biología&quot;)]</code></pre>
                         <pre><code>## [1] &quot;Biología&quot; &quot;Biología&quot;</code></pre>
                         <div class="alert alert-info" role="alert">
-                        <p><strong>¡Manos a la obra!</strong></p>
-                        <hr>
-                        <p>Cree un vector con los nombres de cinco personas que admiras. ¿Qué tipo de datos forman este vector? ¿Qué nombre se almacena en la tercera posición?</p>
+                            <p><strong>¡Manos a la obra!</strong></p>
+                            <hr>
+                            <p>Cree un vector con los nombres de cinco personas que admiras. ¿Qué tipo de datos forman este vector? ¿Qué nombre se almacena en la tercera posición?</p>
                         </div>
                     </div>
                     <div id="matrices" class="section level4">
@@ -346,30 +349,30 @@ str(mi_data)</code></pre>
             </div>
             <hr>
             <div id="estructuras_condicionales" class="section level2">
-                    <h3> Estructuras condicionales</h3>
-                    <p><strong>If & else (Si & sino)</strong></p>
-                    <p>Estructuras condicionales son dispositivos de lenguaje de programación para determinar qué bloque de código se ejecutará en una condición determinada.
-                    </p>
-                    <pre class="r"><code>promedio = 12
+                <h3> Estructuras condicionales</h3>
+                <p><strong>If & else (Si & sino)</strong></p>
+                <p>Estructuras condicionales son dispositivos de lenguaje de programación para determinar qué bloque de código se ejecutará en una condición determinada.
+                </p>
+                <pre class="r"><code>promedio = 12
 
 if (promedio &gt;= 11) {
   print(&quot;Passaste de año!&quot;)
 } else{
   print(&quot;Repetiste de año!&quot;)
 } </code></pre>
-                    <pre><code>## [1] &quot;Passaste de año!&quot;</code></pre>
+                <pre><code>## [1] &quot;Passaste de año!&quot;</code></pre>
 
-                    <p>En ejemplo de arriba, verificamos si su objeto promedio es mayor que 11 con la condición <i>if</i>, de lo contrario, el <i>else</i> sería activado.</p>
-                    <pre class="r"><code>promedio = 8
+                <p>En ejemplo de arriba, verificamos si su objeto promedio es mayor que 11 con la condición <i>if</i>, de lo contrario, el <i>else</i> sería activado.</p>
+                <pre class="r"><code>promedio = 8
 
 if (promedio &gt;= 11) {
   print(&quot;Passaste de año!&quot;)
 } else{
   print(&quot;Repetiste de año!&quot;)
 } </code></pre>
-                    <pre><code>## [1] &quot;Repetiste de año!&quot;</code></pre>
-                    <p>Cuando necesite usar más de una condición, puede usar <i>else if</i>.</p>
-                    <pre class="r"><code>
+                <pre><code>## [1] &quot;Repetiste de año!&quot;</code></pre>
+                <p>Cuando necesite usar más de una condición, puede usar <i>else if</i>.</p>
+                <pre class="r"><code>
 promedio = 8
                         
 if (promedio &gt;= 11) {
@@ -379,193 +382,193 @@ if (promedio &gt;= 11) {
 } else{
   print(&quot;Repetiste de año!&quot;)
 } </code></pre>
-                    <pre><code>## [1] &quot;Necessitas recuperación!&quot;</code></pre>
-                    <hr>
-                    <h5>En esta tabla podemos ver la encuesta del índice de felicidad, apoyo social y esperanza de vida de los países latinoamericanos en el año 2021. Datos de felicidad descargados de <a href="https://www.kaggle.com" class="alert-link">kaggle</a>.
-                    </h5>
-                    <table class="styled-table" style="border:1px solid black;margin-left:auto;margin-right:auto;">
-                        <thead>
-                            <tr class="tableizer-firstrow">
-                                <th>Country.name</th>
-                                <th>Regional.indicator</th>
-                                <th>Ladder.score</th>
-                                <th>Social.support</th>
-                                <th>Healthy.life.expectancy</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Costa Rica</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>7.069</td>
-                                <td>0.891</td>
-                                <td>71.4</td>
-                            </tr>
-                            <tr>
-                                <td>Guatemala</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.435</td>
-                                <td>0.813</td>
-                                <td>64.958</td>
-                            </tr>
-                            <tr>
-                                <td>Uruguay</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.431</td>
-                                <td>0.925</td>
-                                <td>69.1</td>
-                            </tr>
-                            <tr>
-                                <td>Brazil</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.33</td>
-                                <td>0.882</td>
-                                <td>66.601</td>
-                            </tr>
-                            <tr>
-                                <td>Mexico</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.317</td>
-                                <td>0.831</td>
-                                <td>68.597</td>
-                            </tr>
-                            <tr>
-                                <td>Jamaica</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.309</td>
-                                <td>0.877</td>
-                                <td>67.5</td>
-                            </tr>
-                            <tr>
-                                <td>Panama</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.18</td>
-                                <td>0.896</td>
-                                <td>69.652</td>
-                            </tr>
-                            <tr>
-                                <td>Chile</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.172</td>
-                                <td>0.882</td>
-                                <td>70</td>
-                            </tr>
-                            <tr>
-                                <td>El Salvador</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.061</td>
-                                <td>0.762</td>
-                                <td>66.402</td>
-                            </tr>
-                            <tr>
-                                <td>Colombia</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>6.012</td>
-                                <td>0.847</td>
-                                <td>68.001</td>
-                            </tr>
-                            <tr>
-                                <td>Nicaragua</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>5.972</td>
-                                <td>0.864</td>
-                                <td>67.657</td>
-                            </tr>
-                            <tr>
-                                <td>Argentina</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>5.929</td>
-                                <td>0.898</td>
-                                <td>69</td>
-                            </tr>
-                            <tr>
-                                <td>Honduras</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>5.919</td>
-                                <td>0.812</td>
-                                <td>67.3</td>
-                            </tr>
-                            <tr>
-                                <td>Peru</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>5.84</td>
-                                <td>0.832</td>
-                                <td>68.25</td>
-                            </tr>
-                            <tr>
-                                <td>Ecuador</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>5.764</td>
-                                <td>0.821</td>
-                                <td>68.8</td>
-                            </tr>
-                            <tr>
-                                <td>Bolivia</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>5.716</td>
-                                <td>0.81</td>
-                                <td>63.901</td>
-                            </tr>
-                            <tr>
-                                <td>Paraguay</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>5.653</td>
-                                <td>0.893</td>
-                                <td>65.9</td>
-                            </tr>
-                            <tr>
-                                <td>Dominican Republic</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>5.545</td>
-                                <td>0.853</td>
-                                <td>66.102</td>
-                            </tr>
-                            <tr>
-                                <td>Venezuela</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>4.892</td>
-                                <td>0.861</td>
-                                <td>66.7</td>
-                            </tr>
-                            <tr>
-                                <td>Haiti</td>
-                                <td>Latin America and Caribbean</td>
-                                <td>3.615</td>
-                                <td>0.54</td>
-                                <td>55.7</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <div class="alert alert-info" role="alert">
-                        <h5>¡Manos a la obra!</h5>
-                        <hr> El promedio del indice de la felicidad (columna ladder.score) de los países latinoamericanos es de 5.90. <br> Cree una condición para identificar los países que tienen un índice superior a 5.90 y <i>print</i> "País feliz!", sino
-                        <i>print</i> "Más fiestas!". Para este ejercicio, descargue la tabla <a href="tabelas/felicidad_america_latina.csv" class="alert-link">aquí</a>.
-                    </div>
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header">
-                                <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                <pre><code>## [1] &quot;Necessitas recuperación!&quot;</code></pre>
+                <hr>
+                <h5>En esta tabla podemos ver la encuesta del índice de felicidad, apoyo social y esperanza de vida de los países latinoamericanos en el año 2021. Datos de felicidad descargados de <a href="https://www.kaggle.com" class="alert-link">kaggle</a>.
+                </h5>
+                <table class="styled-table" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+                    <thead>
+                        <tr class="tableizer-firstrow">
+                            <th>Country.name</th>
+                            <th>Regional.indicator</th>
+                            <th>Ladder.score</th>
+                            <th>Social.support</th>
+                            <th>Healthy.life.expectancy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Costa Rica</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>7.069</td>
+                            <td>0.891</td>
+                            <td>71.4</td>
+                        </tr>
+                        <tr>
+                            <td>Guatemala</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.435</td>
+                            <td>0.813</td>
+                            <td>64.958</td>
+                        </tr>
+                        <tr>
+                            <td>Uruguay</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.431</td>
+                            <td>0.925</td>
+                            <td>69.1</td>
+                        </tr>
+                        <tr>
+                            <td>Brazil</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.33</td>
+                            <td>0.882</td>
+                            <td>66.601</td>
+                        </tr>
+                        <tr>
+                            <td>Mexico</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.317</td>
+                            <td>0.831</td>
+                            <td>68.597</td>
+                        </tr>
+                        <tr>
+                            <td>Jamaica</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.309</td>
+                            <td>0.877</td>
+                            <td>67.5</td>
+                        </tr>
+                        <tr>
+                            <td>Panama</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.18</td>
+                            <td>0.896</td>
+                            <td>69.652</td>
+                        </tr>
+                        <tr>
+                            <td>Chile</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.172</td>
+                            <td>0.882</td>
+                            <td>70</td>
+                        </tr>
+                        <tr>
+                            <td>El Salvador</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.061</td>
+                            <td>0.762</td>
+                            <td>66.402</td>
+                        </tr>
+                        <tr>
+                            <td>Colombia</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>6.012</td>
+                            <td>0.847</td>
+                            <td>68.001</td>
+                        </tr>
+                        <tr>
+                            <td>Nicaragua</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>5.972</td>
+                            <td>0.864</td>
+                            <td>67.657</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>5.929</td>
+                            <td>0.898</td>
+                            <td>69</td>
+                        </tr>
+                        <tr>
+                            <td>Honduras</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>5.919</td>
+                            <td>0.812</td>
+                            <td>67.3</td>
+                        </tr>
+                        <tr>
+                            <td>Peru</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>5.84</td>
+                            <td>0.832</td>
+                            <td>68.25</td>
+                        </tr>
+                        <tr>
+                            <td>Ecuador</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>5.764</td>
+                            <td>0.821</td>
+                            <td>68.8</td>
+                        </tr>
+                        <tr>
+                            <td>Bolivia</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>5.716</td>
+                            <td>0.81</td>
+                            <td>63.901</td>
+                        </tr>
+                        <tr>
+                            <td>Paraguay</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>5.653</td>
+                            <td>0.893</td>
+                            <td>65.9</td>
+                        </tr>
+                        <tr>
+                            <td>Dominican Republic</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>5.545</td>
+                            <td>0.853</td>
+                            <td>66.102</td>
+                        </tr>
+                        <tr>
+                            <td>Venezuela</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>4.892</td>
+                            <td>0.861</td>
+                            <td>66.7</td>
+                        </tr>
+                        <tr>
+                            <td>Haiti</td>
+                            <td>Latin America and Caribbean</td>
+                            <td>3.615</td>
+                            <td>0.54</td>
+                            <td>55.7</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <div class="alert alert-info" role="alert">
+                    <h5>¡Manos a la obra!</h5>
+                    <hr> El promedio del indice de la felicidad (columna ladder.score) de los países latinoamericanos es de 5.90. <br> Cree una condición para identificar los países que tienen un índice superior a 5.90 y <i>print</i> "País feliz!", sino
+                    <i>print</i> "Más fiestas!". Para este ejercicio, descargue la tabla <a href="tabelas/felicidad_america_latina.csv" class="alert-link">aquí</a>.
+                </div>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
                                     Resultado esperado:
                                 </a>
-                            </div>
-                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                                <div class="card-body">
-                                    ¿Qué sucedió? ¿Cuál es la diferencia entre el promedio de notas y este caso?
-                                </div>
+                        </div>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                ¿Qué sucedió? ¿Cuál es la diferencia entre el promedio de notas y este caso?
                             </div>
                         </div>
                     </div>
-                    <hr>
                 </div>
+                <hr>
+            </div>
 
-                <div id="repeticion" class="section level2">
-                    <h3> Estructuras de repetición</h3>
-                    <p>Si tiene que repetir una secuencia de instrucciones varias veces hasta que alcance una determinada condición, puede utilizar la función <i>for</i>.</p>
-                    <pre class="r"><code>for(i in 1:10){
+            <div id="repeticion" class="section level2">
+                <h3> Estructuras de repetición</h3>
+                <p>Si tiene que repetir una secuencia de instrucciones varias veces hasta que alcance una determinada condición, puede utilizar la función <i>for</i>.</p>
+                <pre class="r"><code>for(i in 1:10){
  print(i)
 }</code></pre>
-                    <pre><code>## [1] 1
+                <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
 ## [1] 4
@@ -575,8 +578,8 @@ if (promedio &gt;= 11) {
 ## [1] 8
 ## [1] 9
 ## [1] 10</code></pre>
-                    <p>Ahora podemos comprobar los índices de la tabla de felicidad.</p>
-                    <pre class="r"><code>
+                <p>Ahora podemos comprobar los índices de la tabla de felicidad.</p>
+                <pre class="r"><code>
 for (i in 1:nrow(tabela)){
   if (tabela$Ladder.score[i] &gt; 5.90){
    print(&quot;País feliz!&quot;)
@@ -585,7 +588,7 @@ for (i in 1:nrow(tabela)){
   }
 }</code></pre>
 
-                    <pre><code>## [1] &quot;País feliz!&quot;
+                <pre><code>## [1] &quot;País feliz!&quot;
 ## [1] &quot;País feliz!&quot;
 ## [1] &quot;País feliz!&quot;
 ## [1] &quot;País feliz!&quot;
@@ -606,8 +609,8 @@ for (i in 1:nrow(tabela)){
 ## [1] &quot;Más fiestas!&quot;
 ## [1] &quot;Más fiestas!&quot;
 </code></pre>
-                    <p>También podemos crear una nueva columna para ingresar nuevos datos. </p>
-                    <pre class="r"><code>for (i in 1:nrow(tabela)){
+                <p>También podemos crear una nueva columna para ingresar nuevos datos. </p>
+                <pre class="r"><code>for (i in 1:nrow(tabela)){
     if (tabela$Ladder.score[i] &gt; 5.90){
         tabela$felicidad[i] = &quot;País feliz!&quot;
     } else {
@@ -615,7 +618,7 @@ for (i in 1:nrow(tabela)){
     }
 }
 </code></pre>
-                    <pre><code>##          Country.name          Regional.indicator Ladder.score Social.support
+                <pre><code>##          Country.name          Regional.indicator Ladder.score Social.support
 ## 1          Costa Rica Latin America and Caribbean        7.069          0.891
 ## 2           Guatemala Latin America and Caribbean        6.435          0.813
 ## 3             Uruguay Latin America and Caribbean        6.431          0.925
@@ -658,16 +661,16 @@ for (i in 1:nrow(tabela)){
 ## 19                  66.700 Más fiestas!
 ## 20                  55.700 Más fiestas!</code></pre>
 
-                </div>
-                <p>También hay una función llamada <i><strong>while</strong></i>, que es muy similar a <i>for</i>. </p>
-                <pre class="r"><code>x = 0
+            </div>
+            <p>También hay una función llamada <i><strong>while</strong></i>, que es muy similar a <i>for</i>. </p>
+            <pre class="r"><code>x = 0
 
 while(x < 10){
   x = x + 1
   print(x)
 }                    
 </code></pre>
-                <pre><code>## [1] 1
+            <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
 ## [1] 4
@@ -677,9 +680,9 @@ while(x < 10){
 ## [1] 8
 ## [1] 9
 ## [1] 10</code></pre>
-            </div>
         </div>
-        </div>
+    </div>
+    </div>
     </div>
 
     <!-- code folding -->
